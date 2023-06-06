@@ -1,0 +1,49 @@
+---
+subtitle: "Datos Satelitales"
+---
+
+# Cobertura de Suelo
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressPackageStartupMessages(require(knitr))
+suppressPackageStartupMessages(require(kableExtra))
+
+```
+
+## Introdución
+
+Para el caso de estudio se necesita contar con una capa de cobertura de suelo correspondiente al año 2016 de acuerdo a la estimación de población basada en viviendas ruraresl del precenso 2016, por tal motivo se procedió a adquirir el producto de datos {{< var insumos.modis_lc >}} del _Moderate Resolution Imaging Spectroradiometer (MODIS)_ combinando [Terra](https://terra.nasa.gov/about/terra-instruments/modis) y [Aqua](https://oceancolor.gsfc.nasa.gov/data/aqua/) proporciona cobertura terrestre a intervalos anuales a nivel global. El producto de datos MCD12Q1 Versión 6.1 se obtiene mediante clasificaciones supervisadas de los datos de reflectancia MODIS Terra y Aqua.
+
+## Producto de Datos 
+
+Los tipos de cobertura terrestre se derivan de diferentes  esquemas de clasificación del Programa Internacional de la Geosfera y la Biosfera (IGBP), el Índice de Superficie Foliar (LAI) de la Universidad de Maryland (UMD), los Ciclos Biogeoquímicos BIOME (BGC) y los Tipos Funcionales de Plantas (PFT). A continuación, las clasificaciones supervisadas se sometieron a un postprocesamiento adicional que incorporaba conocimientos previos e información auxiliar para refinar aún más las clases específicas. El Sistema de Clasificación de la Cubierta Terrestre (LCCS) de la Organización de las Naciones Unidas para la Agricultura y la Alimentación (FAO) proporciona capas adicionales de evaluación de las propiedades de la cubierta terrestre para la cubierta terrestre, el uso del suelo y la hidrología de superficie.
+
+Para el caso de estudio se utilizará "_**Land Cover Type 2**: Annual University of Maryland (UMD) classification_", que como su nombre lo indica es un tipo de clasificación de uso de suelo anual realizada por la Universidad de Maryland de acuerdo al estudio de referencia @Falchetta_2019
+
+
+## Categorías Clasificadas
+
+Las categorias de uso de suelo clasificadas son las se encuentran en la siguiente tabla:
+
+```{r echo=FALSE}
+
+LC_Type2 <- openxlsx::read.xlsx("data/excel/tab_LC_type2.xlsx")
+
+
+LC_Type2[2] <- cell_spec(LC_Type2[[2]], color = "white", bold = T,
+    background = LC_Type2[[2]])
+kbl(LC_Type2, escape = F, align = "l", caption = "LC_Type2 Class Table") %>%
+  kable_classic("striped", full_width = F)
+
+```
+
+
+
+
+## Visualización de Resultados Landcover T2
+
+Se realizó un proceso de adquisión de datos de cobertura de uso de suelo, filtrándose por región de estudio y año, para luego transformar para entregar un resultado en formato correcto, lo cual quedó registrado en la @sec-LCmodis.
+
+![](images/R08_landcover_t2.png){fig-align="center" width="800"}
+

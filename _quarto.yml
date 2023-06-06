@@ -1,0 +1,57 @@
+project:
+  type: book
+
+book:
+  title: "Nighttime Lights"
+  subtitle: "Acceso a la Electrificación Rural"
+  # affiliation-title: "Universidad Adolfo Ibáñez - Chile"
+  author: "Denis Berroeta González (<denis.berroeta@uai.cl>)"
+  date: "2023-05-17"
+  # number-sections: 3
+  page-footer: 
+    left: "Copyright 2023, Denis Berroeta" 
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - objetivos.qmd
+    
+    - part: "Materiales"
+      chapters:
+        - context.qmd
+        - lucesn.qmd
+        - pob.qmd
+        - landcover.qmd
+        
+    - part: "Métodos"
+      chapters:
+        - experiments.qmd
+        - validation.qmd
+        - results.qmd
+    
+    - conclutions.qmd
+    - references.qmd
+  appendices:
+    - iln.qmd
+    - calc_LC.qmd
+    - kde.qmd
+    
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    html-math-method: katex
+    css: style.css
+    fig-cap-location: "margin"
+    tab-cap-location: "bottom"
+    fig-align: "center"
+    mailto: "denis.berroeta@uai.cl"
+  
+execute:
+  warning: false
+  
+editor: source
+always_allow_html: true
+
+

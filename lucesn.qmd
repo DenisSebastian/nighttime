@@ -1,0 +1,81 @@
+---
+subtitle: "Datos Satelitales"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressPackageStartupMessages(require(knitr))
+suppressPackageStartupMessages(require(kableExtra))
+
+```
+
+# Luces Nocturnas
+
+
+## Introducción
+
+
+
+Uno de los conjuntos de datos de observación de la Tierra más populares últimamente entre los economistas es el de las luces nocturnas. Los investigadores han hallado correlaciones positivas entre los datos de las luces nocturnas y diversas variables socioeconómicas en distintos países. En dos artículos, @Ghosh_2013 y @Huang_2014 citan ejemplos como el consumo de electricidad, el grado de electrificación, las emisiones de dióxido de carbono, el PIB, el PIB per cápita, la población urbana, la población total y la incidencia de la pobreza.
+
+Considerando que varios estudios han demostrado que la producción de luz nocturna está estrechamente relacionada con la capacidad de generación de electricidad y la actividad económica a escala regional y nacional @Elvidge_1997.
+
+Considerando lo anterior se utilizará el producto satelital {{< var insumos.viirs >}} del año 2016, y se fitrará espacialmente por la región del Bío Bío.
+
+
+
+## Producto Satelital
+
+El producto satelital {{< var insumos.viirs >}}, se encuentra disponible de 2014-01-01 hasta 2023-01-01 con una periodicidad mensual, con una resolución espacial de 463.83 metros, cuyo proveedor es el [Earth Observation Group, Payne Institute for Public Policy, Colorado School of Mines](https://eogdata.mines.edu/download_dnb_composites.html). El producto satelital esta corresponde  a imágenes compuestas de radiancia media mensual utilizando datos nocturnos del Visible Infrared Imaging Radiometer Suite (VIIRS) Day/Night Band (DNB).
+
+Como estos datos se componen mensualmente, hay muchas zonas del planeta en las que es imposible obtener una cobertura de datos de buena calidad para ese mes. Esto puede deberse a la nubosidad, especialmente en las regiones tropicales, o a la iluminación solar, como ocurre hacia los polos en sus respectivos meses de verano. Por lo tanto, se recomienda que los usuarios de estos datos utilicen la banda 'cf_cvg' y no asuman que un valor de cero en la imagen de radiancia media significa que no se observaron luces.
+
+
+Bandas:
+
+```{r echo=FALSE}
+
+
+NOAA_VIIRS_tab <- tibble::tribble(
+  ~ Name,
+  ~ Units,
+  ~ Min,
+  ~ Max,
+  ~ Description,
+  "avg_rad",
+  "nanoWatts/cm2/sr",
+  "-1.5*",
+  "193565*",
+  "Average DNB radiance values.",
+  "cf_cvg",
+  NA,
+  "0*",
+  "84*",
+  "Cloud-free coverages; the total number of observations that went into each pixel. This band can be used to identify areas with low numbers of observations where the quality is reduced."
+)
+
+
+
+kable_styling(
+  kable(
+    NOAA_VIIRS_tab,
+    digits = 3,
+    row.names = FALSE,
+    align = "c",
+    caption = "Información de Producto Satelital",
+    format = "html"
+  ),
+  bootstrap_options = c("striped", "hover", "condensed"),
+  position = "center",
+  full_width = FALSE
+) 
+
+    ```
+
+-   *Estimated min or max value*
+
+
+## Cálculo
+
+
+

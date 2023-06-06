@@ -1,0 +1,135 @@
+---
+subtitle: "Análisis Temporal de Acceso a la Electricidad"
+editor_options: 
+  chunk_output_type: console
+---
+
+# Contexto Global
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+suppressPackageStartupMessages(require(knitr))
+suppressPackageStartupMessages(require(kableExtra))
+suppressPackageStartupMessages(require(dplyr))
+suppressPackageStartupMessages(require(ggplot2))
+suppressPackageStartupMessages(require(plotly))
+suppressPackageStartupMessages(require(tidyr))
+
+```
+
+
+
+
+En la actualidad, el acceso a la electricidad es esencial para el desarrollo y el bienestar de las sociedades en todo el mundo. No solo es necesario para el suministro de energía en hogares y empresas, sino que también es fundamental para el acceso a servicios básicos de salud, educación y seguridad. Es por eso que la medición del acceso a la electricidad es un indicador clave para evaluar el progreso en la consecución de los Objetivos de Desarrollo Sostenible de las Naciones Unidas.
+
+En este análisis, se examinarán los indicadores de acceso a la electricidad general, urbano y rural, utilizando los datos obtenidos de la [Base de Datos Mundial de Electrificación del Banco Mundial](https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?end=2020&start=1990&view=chart&year=2020). Estos datos fueron recopilados para el "Seguimiento del ODS 7: Informe de Progreso Energético", el cual fue liderado conjuntamente por la Agencia Internacional de Energía, la Agencia Internacional de Energías Renovables, la División de Estadística de las Naciones Unidas, el Banco Mundial y la Organización Mundial de la Salud.
+
+Los indicadores de acceso a la electricidad se miden como el porcentaje de población con acceso a la electricidad general, urbana y rural. Dado que la electrificación es un tema crucial para el desarrollo, estos indicadores se convierten en herramientas valiosas para la toma de decisiones en políticas públicas y para la identificación de las áreas en las que se necesita una mayor inversión para mejorar el acceso a la electricidad.
+
+En resumen, este análisis estadístico de los indicadores de acceso a la electricidad general, urbano y rural, nos permitirá entender mejor la situación actual del acceso a la electricidad en el mundo. Además, nos ayudará a identificar las áreas prioritarias en las que se debe trabajar para mejorar el acceso a la electricidad y, en última instancia, avanzar hacia un futuro más sostenible y equitativo.
+
+
+## Acceso a la Eletricidad General
+
+```{r}
+access_chl <- readRDS("data/rds/acc_electricity.rds") %>% 
+   filter(country_code =="CHL"|country_code =="LCN") %>% 
+  mutate(value = as.numeric(value)) %>% 
+  # select(-country_name) %>% 
+  pivot_wider(names_from = country_code, values_from = value)
+options(warn = -1)
+
+
+# access_chl$year <- as.character(access_chl$year)
+fig <- plot_ly(access_chl,type = 'scatter', mode = 'lines' )%>%
+  add_trace(x = ~year, y = ~CHL, name = ~country_name)%>%
+  add_trace(x = ~year, y = ~LCN, name = "Latam")%>%
+  layout(title = 'Acceso a la Eletricidad (% Población)',
+         legend=list(title=list(text='País')),
+         xaxis = list(dtick = "M1", tickformat="%b<br>%Y"))
+
+# fig <- fig %>%
+#   layout(
+#          xaxis = list(zerolinecolor = '#ffff',
+#                       zerolinewidth = 2,
+#                       gridcolor = 'ffff'),
+#          yaxis = list(zerolinecolor = '#ffff',
+#                       zerolinewidth = 2,
+#                       gridcolor = 'ffff'),
+#          plot_bgcolor='#e5ecf6')
+
+
+fig
+
+```
+
+
+
+## Acceso a la Electricidad Urbana
+
+```{r}
+access_urb <- readRDS("data/rds/acc_electricity_urb.rds") %>% 
+   filter(country_code =="CHL"|country_code =="LCN") %>% 
+  mutate(value = as.numeric(value)) %>% 
+  # select(-country_name) %>% 
+  pivot_wider(names_from = country_code, values_from = value)
+
+
+# access_chl$year <- as.character(access_chl$year)
+fig <- plot_ly(access_urb,type = 'scatter', mode = 'lines' )%>%
+  add_trace(x = ~year, y = ~CHL, name = ~country_name)%>%
+  add_trace(x = ~year, y = ~LCN, name = "Latam")%>%
+  layout(title = 'Acceso a la Eletricidad Urbana (% Población)',
+         legend=list(title=list(text='País')),
+         xaxis = list(dtick = "M1", tickformat="%b<br>%Y"))
+
+# fig <- fig %>%
+#   layout(
+#          xaxis = list(zerolinecolor = '#ffff',
+#                       zerolinewidth = 2,
+#                       gridcolor = 'ffff'),
+#          yaxis = list(zerolinecolor = '#ffff',
+#                       zerolinewidth = 2,
+#                       gridcolor = 'ffff'),
+#          plot_bgcolor='#e5ecf6')
+
+
+fig
+
+```
+
+
+## Acceso a la Electricidad Rural
+
+
+
+```{r}
+access_rural <- readRDS("data/rds/acc_electricity_rur.rds") %>% 
+   filter(country_code =="CHL"|country_code =="LCN") %>% 
+  mutate(value = as.numeric(value)) %>% 
+  # select(-country_name) %>% 
+  pivot_wider(names_from = country_code, values_from = value)
+
+
+# access_chl$year <- as.character(access_chl$year)
+fig <- plot_ly(access_rural,type = 'scatter', mode = 'lines' )%>%
+  add_trace(x = ~year, y = ~CHL, name = ~country_name)%>%
+  add_trace(x = ~year, y = ~LCN, name = "Latam")%>%
+  layout(title = 'Acceso a la Eletricidad Rural (% Población)',
+         legend=list(title=list(text='País')),
+         xaxis = list(dtick = "M1", tickformat="%b<br>%Y"))
+
+# fig <- fig %>%
+#   layout(
+#          xaxis = list(zerolinecolor = '#ffff',
+#                       zerolinewidth = 2,
+#                       gridcolor = 'ffff'),
+#          yaxis = list(zerolinecolor = '#ffff',
+#                       zerolinewidth = 2,
+#                       gridcolor = 'ffff'),
+#          plot_bgcolor='#e5ecf6')
+
+
+fig
+
+```

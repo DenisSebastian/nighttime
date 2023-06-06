@@ -1,0 +1,36 @@
+---
+title: "Kernel Density Estimation"
+---
+
+
+## Kernel Desnsity Estimation (KDE) de Viviendas Rurales
+
+Identificar el tipo de distribución que tiene a una variable es un paso fundamental en prácticamente todos los estudios que implican datos, son muchas las ventajas que tiene disponer de una función que describa aproximadamente los datos. Por ejemplo, se puede calcular la probabilidad (o densidad en el caso de variables aleatorias continuas) de que una observación tome un determinado valor. También es posible simular nuevos. valores.
+
+En términos generales, ajustar una distribución consiste en encontrar una función matemática capaz de describir un conjunto de datos. De entre todas las posibles funciones candidatas, lo interesante es encontrar aquella que, con mayor probabilidad, puede haber generado los datos observados.
+
+Una de las aproximaciones más prácticas es utilizar como candidatas distribuciones paramétricas, estas son distribuciones conocidas cuyo comportamiento está determinado usando un número finito de parámetros. Por ejemplo, la distribución normal está parametrizada por la media y la desviación típica.
+
+Cuando ninguna de las distribuciones paramétricas disponibles describe correctamente los datos, es necesario recurrir lo que se conoce como métodos de ajuste no paramétricos, cuyo objetivo es encontrar funciones que describan distribuciones cualesquiera, entendiendo por cualesquiera a que no se limitan a las distribuciones paramétricas conocidas. Uno de los métodos más empleados es kernel density estimation (KDE).
+
+## Definición Matemática de KDE
+
+Dado un conjunto de datos $x={x_1,x_2,...,x_n}$ la función de distribución de densidad $f(x)$ puede aproximarse utilizando un kernel density estimation (KDE) tal que:
+
+$$
+\hat{f}(x)=\frac{1}{n}\sum_{i = 1}^{n}K_h(x-x_i)= \frac{1}{nh}\sum_{i = 1}^{n}K\left(\frac{x-x_i}{h}\right)
+$$ 
+
+\* $n$: es el número de datos (observaciones). Cada uno de ellos es el centro sobre el que se coloca un kernel.
+
+-   $h$: es el ancho de banda (bandwidth o smoothing parameter). Controla cuánto se expande la influencia de cada observación. Si se emplea como kernel una distribución normal, equivale a la desviación típica. Este es el valor más determinante a la hora de ajustar un KDE, puesto que condiciona el nivel de sobreajuste.
+
+-   $K$: es el Kernel, una función que define la forma y la distribución de la influencia (peso) que se asocian a cada observación. En los ejemplos anteriores se ha utilizado como kernel la distribución normal.
+
+## Aproximación Espacial de KDE  
+
+Para aplicar los KDE a casos espaciales, se tiene que entender que las variables aleatorias antes señaladas, ahora van a corresponder a eventos o condiciones físicas que ocurren en el espacio, por ende bajo un sistema de coordenadas, por lo cual el eje de coordenadas $x$ e $y$ que también intervienen como nuevas dimensiones, entonces los que se predente estimar una distribución multivariante.
+
+![De puentos espaciales a Mapa de Densidad.](images/Density-map_point-map.png)
+
+Entonces para el caso espacial lo que se prentende identificar patrones de cluster basándose en proximidad espacial. Los elementos del KDE Univariado tambien están presentes en el caso espacial como por ejemplo en ancho de banda para el caso de vivienda rural no debe ser amplio.

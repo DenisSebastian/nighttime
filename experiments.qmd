@@ -1,0 +1,9 @@
+---
+subtitle: "Modelo de Datos"
+---
+
+# Experimentación
+
+
+![El diagrama de flujo representa las diferentes etapas, entradas de datos y salidas en la generación y validación de los datos. Azul: variables de teledetección; rojo: etapas de procesamiento; morado: métricas de salida; verde: datos de salida; blanco: conjuntos de datos de validación y apoyo; gris: etapas. @Falchetta_2019](images/workflow.png){fig-aling="center"}
+

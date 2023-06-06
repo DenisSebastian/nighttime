@@ -1,0 +1,37 @@
+version: 1
+
+email:
+  author: "<denis.berroeta@uai.cl>"
+
+author:
+  name: "[Denis Berroeta](https://cit.uai.cl/denis-berroeta/)"
+  cargo: "Coordinador de Investigación, [Centro de Inteligencia Territorial - UAI](https://cit.uai.cl)"
+  email: "<denis.berroeta@uai.cl>"
+
+
+
+insumos:
+  viirs: "[VIIRS Stray Light Corrected Nighttime Day/Night Band Composites Version 1](https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_MONTHLY_V1_VCMSLCFG)"
+  modis_lc: "[MCD12Q1.061 MODIS Land Cover Type Yearly Global 500m](https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MCD12Q1)"
+  catalogo: "[Earth Engine Data Catalog](https://developers.google.com/earth-engine/datasets)"
+  landsat: "[Landsat Collections](https://developers.google.com/earth-engine/datasets/catalog/landsat)"
+  landsat_8: "[Landsat 8](https://developers.google.com/earth-engine/datasets/catalog/landsat-8)"
+  landsat_9: "[Landsat 9](https://developers.google.com/earth-engine/datasets/catalog/landsat-9)"
+  sentinel: "[Sentinel Collections](https://developers.google.com/earth-engine/datasets/catalog/sentinel)"
+  sentinel_2: "[Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/sentinel-2)"
+  
+
+org:
+  sii: "[Servicio de Impuestos Internos](https://homer.sii.cl)"
+  ine: "[Instituto Nacional de Estadísticas](https://www.ine.gob.cl)"
+  wbank: "[Banco Mundial](https://data.worldbank.org/)"
+  
+  
+gee:
+  name: "[Goole Earth Engine](https://earthengine.google.com)"
+  code_editor: "[Code Editor](https://code.earthengine.google.com)"
+  rgee: "[Rgee](https://cran.r-project.org/web/packages/rgee/index.html)"
+  doc_python: "[Documentación en Python](https://developers.google.com/earth-engine/guides/python_install)"
+  doc_js: "[Documentación en Javascript](https://developers.google.com/earth-engine/tutorials/tutorial_js_01)"
+  
+
