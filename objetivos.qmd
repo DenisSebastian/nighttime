@@ -1,1 +1,14 @@
 # Objetivos
+
+
+## Objetivo General
+
+Crear un índice que evidiencia el acceso de electrificación a las personas en zona rural y urbana para la región del Bío Bío utulizando percepción remota.
+
+## Objetivos Específicos
+
+- Diseñar e implementar un método válido que represente la distribución espacial de las personas en zonas rurales basándose en las viendas obpenidas en el precenso 2016 en la región de estudio.
+
+- Obtener un representación espacial de la distribución espacial urbano rural de eletricidad, utilizando luces nocturnas del año 2016 obtenidas mediante uso de Percepción Remota en la región de estudio.
+
+- Obtener una caraterización del uso de suelo en la regíon estudio que existía durante el año 2016.

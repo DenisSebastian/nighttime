@@ -1,4 +1,4 @@
-# Introduction
+# Introducción
 
 
 El Objetivo de Desarrollo Sostenible 7 (ODS 7) de las Naciones Unidas pretende garantizar el acceso a una energía asequible, fiable, sostenible y moderna para todos en 20301. El acceso a los servicios de electricidad (metas 7.1.1 y 7.A y 7.B de los ODS) es una prioridad clave en el marco de este objetivo, también debido a las fuertes interconexiones que presenta con otros objetivos de desarrollo2-5, pero su consecución a nivel mundial presenta retos significativos6. Se necesita información espacialmente explícita, actualizada y armonizada sobre el progreso de la electrificación para identificar dónde pueden centrarse los esfuerzos locales, nacionales e internacionales para lograr los mayores beneficios.
