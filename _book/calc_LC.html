@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nighttime Lights - Appendix B — Cobertura de Suelo MODIS</title>
+<title>Nighttime Lights - Appendix C — Land Cover MODIS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -94,7 +65,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./kde.html" rel="next">
-<link href="./iln.html" rel="prev">
+<link href="./calc_pob.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -135,11 +107,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Appendix B — Cobertura de Suelo MODIS</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iln.html">Appendices</a></li><li class="breadcrumb-item"><a href="./calc_LC.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Land Cover MODIS</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -147,120 +124,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Nighttime Lights</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Prefacio</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./objetivos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Objetivos</span></a>
+  <a href="./objetivos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Objetivos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Materiales</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Materiales</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./context.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Contexto Global</span></a>
+  <a href="./context.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Contexto Global</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lucesn.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Luces Nocturnas</span></a>
+  <a href="./lucesn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Luces Nocturnas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana Rural</span></a>
+  <a href="./pob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana-Rural</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./landcover.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Cobertura de Suelo</span></a>
+  <a href="./landcover.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Cobertura de Suelo</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Métodos</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Métodos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./experiments.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experimentación</span></a>
+  <a href="./experiments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Experimentación</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./validation.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Validación</span></a>
+  <a href="./validation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Validación</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Resultados</span></a>
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Resultados</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclutions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusiones</span></a>
+  <a href="./conclutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Conclusiones</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./iln.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Luminosidad Noc. (VIIRS)</span></a>
+  <a href="./iln.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Luminosidad Noc. (VIIRS)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./calc_LC.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cobertura de Suelo MODIS</span></a>
+  <a href="./calc_pob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cálculo de Población</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./kde.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></a>
+  <a href="./calc_LC.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Land Cover MODIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./kde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
   </div>
 </li>
       </ul>
@@ -268,21 +269,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link active" data-scroll-target="#objetivos"><span class="toc-section-number">B.1</span>  Objetivos</a></li>
-  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología"><span class="toc-section-number">B.2</span>  Metodología</a></li>
-  <li><a href="#sec-LCmodis" id="toc-sec-LCmodis" class="nav-link" data-scroll-target="#sec-LCmodis"><span class="toc-section-number">B.3</span>  Producto de Datos</a></li>
-  <li><a href="#recursos-y-parámetros-generales" id="toc-recursos-y-parámetros-generales" class="nav-link" data-scroll-target="#recursos-y-parámetros-generales"><span class="toc-section-number">B.4</span>  Recursos y parámetros generales</a></li>
-  <li><a href="#definición-de-área-de-estudio" id="toc-definición-de-área-de-estudio" class="nav-link" data-scroll-target="#definición-de-área-de-estudio"><span class="toc-section-number">B.5</span>  Definición de Área de Estudio</a></li>
-  <li><a href="#producto-de-datos" id="toc-producto-de-datos" class="nav-link" data-scroll-target="#producto-de-datos"><span class="toc-section-number">B.6</span>  Producto de Datos</a></li>
-  <li><a href="#descarga-de-raster" id="toc-descarga-de-raster" class="nav-link" data-scroll-target="#descarga-de-raster"><span class="toc-section-number">B.7</span>  Descarga de Raster</a></li>
-  <li><a href="#ajuste-resolución" id="toc-ajuste-resolución" class="nav-link" data-scroll-target="#ajuste-resolución"><span class="toc-section-number">B.8</span>  Ajuste Resolución</a></li>
-  <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><span class="toc-section-number">B.9</span>  Visualización de resultados</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link active" data-scroll-target="#objetivos"><span class="header-section-number">C.1</span> Objetivos</a></li>
+  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología"><span class="header-section-number">C.2</span> Metodología</a></li>
+  <li><a href="#sec-LCmodis" id="toc-sec-LCmodis" class="nav-link" data-scroll-target="#sec-LCmodis"><span class="header-section-number">C.3</span> Producto de Datos</a></li>
+  <li><a href="#recursos-y-parámetros-generales" id="toc-recursos-y-parámetros-generales" class="nav-link" data-scroll-target="#recursos-y-parámetros-generales"><span class="header-section-number">C.4</span> Recursos y parámetros generales</a></li>
+  <li><a href="#definición-de-área-de-estudio" id="toc-definición-de-área-de-estudio" class="nav-link" data-scroll-target="#definición-de-área-de-estudio"><span class="header-section-number">C.5</span> Definición de Área de Estudio</a></li>
+  <li><a href="#producto-de-datos" id="toc-producto-de-datos" class="nav-link" data-scroll-target="#producto-de-datos"><span class="header-section-number">C.6</span> Producto de Datos</a></li>
+  <li><a href="#descarga-de-raster" id="toc-descarga-de-raster" class="nav-link" data-scroll-target="#descarga-de-raster"><span class="header-section-number">C.7</span> Descarga de Raster</a></li>
+  <li><a href="#ajuste-resolución" id="toc-ajuste-resolución" class="nav-link" data-scroll-target="#ajuste-resolución"><span class="header-section-number">C.8</span> Ajuste Resolución</a></li>
+  <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><span class="header-section-number">C.9</span> Visualización de resultados</a></li>
   </ul>
 </nav>
     </div>
@@ -291,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Appendix B — Cobertura de Suelo MODIS</h1>
+<h1 class="title">Appendix C — Land Cover MODIS</h1>
 <p class="subtitle lead">Procedimiento adquisión de producto a nivel regional</p>
 </div>
 
@@ -308,18 +310,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <!-- ![Imagen de referencia de lluces nocturnas de la ciudad de Viña del Mar y Valparaíso](images/vina-del-mar.jpeg){fig-align="center"} -->
-<section id="objetivos" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">B.1</span> Objetivos</h2>
+<section id="objetivos" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">C.1</span> Objetivos</h2>
 <p>El presente título tiene como objetivo documentar los pasos para la adquisición del producto satelital <a href="https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MCD12Q1">MCD12Q1.061 MODIS Land Cover Type Yearly Global 500m</a> que contiene las diferentes coberturas de suelo a nivel mundial, filtrar por año y región de estudio y guardar los resultados en en el formato correcto para ser utilizado como producto válido.</p>
 </section>
-<section id="metodología" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="metodología"><span class="header-section-number">B.2</span> Metodología</h2>
+<section id="metodología" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="metodología"><span class="header-section-number">C.2</span> Metodología</h2>
 <p>De forma general se utilizará como base producto producto de datos MCD12Q1 Versión 6.1 del Moderate Resolution Imaging Spectroradiometer (MODIS) combinado Terra y Aqua proporciona cobertura terrestre a intervalos anuales a nivel global.</p>
 <p>Se definirá una región de estudio, para el caso práctico de cálculo corresponde a la región del Bío Bío y año de análisis el 2016 que corresponde al periodo de levantamiento de información del Pre Censo.</p>
 <p>Posteriormente se accederá el producto de datos filtrará por año y región de estudio, además se realizarán correcciones y transformaciones que permitan homologar en estructura raster con los demás productos satelitales del proyecto.</p>
 </section>
-<section id="sec-LCmodis" class="level2" data-number="B.3">
-<h2 data-number="B.3" class="anchored" data-anchor-id="sec-LCmodis"><span class="header-section-number">B.3</span> Producto de Datos</h2>
+<section id="sec-LCmodis" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="sec-LCmodis"><span class="header-section-number">C.3</span> Producto de Datos</h2>
 <dl>
 <dt>Nombre:</dt>
 <dd>
@@ -352,107 +354,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Para el caso de investigación se utilizará el producto “LC_Type2 Class Table” que contiene la siguiente información.</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<table class=" lightable-classic lightable-striped" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="lightable-classic lightable-striped table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>LC_Type2 Class Table</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Value </th>
-   <th style="text-align:left;"> Color </th>
-   <th style="text-align:left;"> Description </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #1c0dff !important;">#1c0dff</span> </td>
-   <td style="text-align:left;"> Water Bodies: at least 60% of area is covered by permanent water bodies. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #05450a !important;">#05450a</span> </td>
-   <td style="text-align:left;"> Evergreen Needleleaf Forests: dominated by evergreen conifer trees (canopy &gt;2m). Tree cover &gt;60%. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #086a10 !important;">#086a10</span> </td>
-   <td style="text-align:left;"> Evergreen Broadleaf Forests: dominated by evergreen broadleaf and palmate trees (canopy &gt;2m). Tree cover &gt;60%. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #54a708 !important;">#54a708</span> </td>
-   <td style="text-align:left;"> Deciduous Needleleaf Forests: dominated by deciduous needleleaf (larch) trees (canopy &gt;2m). Tree cover &gt;60%. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #78d203 !important;">#78d203</span> </td>
-   <td style="text-align:left;"> Deciduous Broadleaf Forests: dominated by deciduous broadleaf trees (canopy &gt;2m). Tree cover &gt;60%. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #009900 !important;">#009900</span> </td>
-   <td style="text-align:left;"> Mixed Forests: dominated by neither deciduous nor evergreen (40-60% of each) tree type (canopy &gt;2m). Tree cover &gt;60%. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #c6b044 !important;">#c6b044</span> </td>
-   <td style="text-align:left;"> Closed Shrublands: dominated by woody perennials (1-2m height) &gt;60% cover. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dcd159 !important;">#dcd159</span> </td>
-   <td style="text-align:left;"> Open Shrublands: dominated by woody perennials (1-2m height) 10-60% cover. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 8 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dade48 !important;">#dade48</span> </td>
-   <td style="text-align:left;"> Woody Savannas: tree cover 30-60% (canopy &gt;2m). </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #fbff13 !important;">#fbff13</span> </td>
-   <td style="text-align:left;"> Savannas: tree cover 10-30% (canopy &gt;2m). </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 10 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #b6ff05 !important;">#b6ff05</span> </td>
-   <td style="text-align:left;"> Grasslands: dominated by herbaceous annuals (
-  </td>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Value</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Color</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
 </tr>
-  <tr>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #27ff87 !important;">#27ff87</span> </td>
-   <td style="text-align:left;"> Permanent Wetlands: permanently inundated lands with 30-60% water cover and &gt;10% vegetated cover. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 12 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #c24f44 !important;">#c24f44</span> </td>
-   <td style="text-align:left;"> Croplands: at least 60% of area is cultivated cropland. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #a5a5a5 !important;">#a5a5a5</span> </td>
-   <td style="text-align:left;"> Urban and Built-up Lands: at least 30% impervious surface area including building materials, asphalt and vehicles. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 14 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ff6d4c !important;">#ff6d4c</span> </td>
-   <td style="text-align:left;"> Cropland/Natural Vegetation Mosaics: mosaics of small-scale cultivation 40-60% with natural tree, shrub, or herbaceous vegetation. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:left;"> <span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #f9ffa4 !important;">#f9ffa4</span> </td>
-   <td style="text-align:left;"> Non-Vegetated Lands: at least 60% of area is non-vegetated barren (sand, rock, soil) or permanent snow and ice with less than 10% vegetation. </td>
-  </tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #1c0dff !important;">#1c0dff</span></td>
+<td style="text-align: left;">Water Bodies: at least 60% of area is covered by permanent water bodies.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #05450a !important;">#05450a</span></td>
+<td style="text-align: left;">Evergreen Needleleaf Forests: dominated by evergreen conifer trees (canopy &gt;2m). Tree cover &gt;60%.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #086a10 !important;">#086a10</span></td>
+<td style="text-align: left;">Evergreen Broadleaf Forests: dominated by evergreen broadleaf and palmate trees (canopy &gt;2m). Tree cover &gt;60%.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #54a708 !important;">#54a708</span></td>
+<td style="text-align: left;">Deciduous Needleleaf Forests: dominated by deciduous needleleaf (larch) trees (canopy &gt;2m). Tree cover &gt;60%.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #78d203 !important;">#78d203</span></td>
+<td style="text-align: left;">Deciduous Broadleaf Forests: dominated by deciduous broadleaf trees (canopy &gt;2m). Tree cover &gt;60%.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #009900 !important;">#009900</span></td>
+<td style="text-align: left;">Mixed Forests: dominated by neither deciduous nor evergreen (40-60% of each) tree type (canopy &gt;2m). Tree cover &gt;60%.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #c6b044 !important;">#c6b044</span></td>
+<td style="text-align: left;">Closed Shrublands: dominated by woody perennials (1-2m height) &gt;60% cover.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dcd159 !important;">#dcd159</span></td>
+<td style="text-align: left;">Open Shrublands: dominated by woody perennials (1-2m height) 10-60% cover.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #dade48 !important;">#dade48</span></td>
+<td style="text-align: left;">Woody Savannas: tree cover 30-60% (canopy &gt;2m).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #fbff13 !important;">#fbff13</span></td>
+<td style="text-align: left;">Savannas: tree cover 10-30% (canopy &gt;2m).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #b6ff05 !important;">#b6ff05</span></td>
+<td style="text-align: left;">Grasslands: dominated by herbaceous annuals (</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #27ff87 !important;">#27ff87</span></td>
+<td style="text-align: left;">Permanent Wetlands: permanently inundated lands with 30-60% water cover and &gt;10% vegetated cover.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #c24f44 !important;">#c24f44</span></td>
+<td style="text-align: left;">Croplands: at least 60% of area is cultivated cropland.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #a5a5a5 !important;">#a5a5a5</span></td>
+<td style="text-align: left;">Urban and Built-up Lands: at least 30% impervious surface area including building materials, asphalt and vehicles.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">14</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ff6d4c !important;">#ff6d4c</span></td>
+<td style="text-align: left;">Cropland/Natural Vegetation Mosaics: mosaics of small-scale cultivation 40-60% with natural tree, shrub, or herbaceous vegetation.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;"><span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #f9ffa4 !important;">#f9ffa4</span></td>
+<td style="text-align: left;">Non-Vegetated Lands: at least 60% of area is non-vegetated barren (sand, rock, soil) or permanent snow and ice with less than 10% vegetation.</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
 <p>A continuación se presenta los pasos detallados en el proceso de captura y producción del producto de datos correspondiente a la Cobertura de Uso de Suelo, para lo anterior también utilizará la plataforma de <a href="https://earthengine.google.com">Goole Earth Engine</a> a través de la librería llamada <a href="https://cran.r-project.org/web/packages/rgee/index.html">Rgee</a>.</p>
 </section>
-<section id="recursos-y-parámetros-generales" class="level2" data-number="B.4">
-<h2 data-number="B.4" class="anchored" data-anchor-id="recursos-y-parámetros-generales"><span class="header-section-number">B.4</span> Recursos y parámetros generales</h2>
+<section id="recursos-y-parámetros-generales" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="recursos-y-parámetros-generales"><span class="header-section-number">C.4</span> Recursos y parámetros generales</h2>
 <p>Pimeramente se definen librerías y parámetros generales de uso a lo largo del presente presente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recursos ----------------------------------------------------------------</span></span>
@@ -483,8 +484,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                  scale_r_out, <span class="st">".tif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="definición-de-área-de-estudio" class="level2" data-number="B.5">
-<h2 data-number="B.5" class="anchored" data-anchor-id="definición-de-área-de-estudio"><span class="header-section-number">B.5</span> Definición de Área de Estudio</h2>
+<section id="definición-de-área-de-estudio" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="definición-de-área-de-estudio"><span class="header-section-number">C.5</span> Definición de Área de Estudio</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Región de Estudio -------------------------------------------------------</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>region_sf <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../../insumos/regiones/Regiones_Chile.rds"</span>) <span class="sc">%&gt;%</span> </span>
@@ -504,8 +505,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ae_ee <span class="ot">&lt;-</span> ae <span class="sc">%&gt;%</span> <span class="fu">sf_as_ee</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="producto-de-datos" class="level2" data-number="B.6">
-<h2 data-number="B.6" class="anchored" data-anchor-id="producto-de-datos"><span class="header-section-number">B.6</span> Producto de Datos</h2>
+<section id="producto-de-datos" class="level2" data-number="C.6">
+<h2 data-number="C.6" class="anchored" data-anchor-id="producto-de-datos"><span class="header-section-number">C.6</span> Producto de Datos</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgee)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>email_gee <span class="ot">=</span> <span class="st">'denis.berroeta@gmail.com'</span></span>
@@ -534,8 +535,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><img src="images/R08_LC_raw.png" class="img-fluid"></p>
 </section>
-<section id="descarga-de-raster" class="level2" data-number="B.7">
-<h2 data-number="B.7" class="anchored" data-anchor-id="descarga-de-raster"><span class="header-section-number">B.7</span> Descarga de Raster</h2>
+<section id="descarga-de-raster" class="level2" data-number="C.7">
+<h2 data-number="C.7" class="anchored" data-anchor-id="descarga-de-raster"><span class="header-section-number">C.7</span> Descarga de Raster</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">dl_image</span>(<span class="at">image_ee =</span> land_cove_t2, <span class="at">roi =</span> region_sf,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> year, <span class="at">n_region =</span> n_region,</span>
@@ -548,8 +549,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>raster_lc_t2 <span class="ot">&lt;-</span>  <span class="fu">raster</span>(img<span class="sc">$</span>dsn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="ajuste-resolución" class="level2" data-number="B.8">
-<h2 data-number="B.8" class="anchored" data-anchor-id="ajuste-resolución"><span class="header-section-number">B.8</span> Ajuste Resolución</h2>
+<section id="ajuste-resolución" class="level2" data-number="C.8">
+<h2 data-number="C.8" class="anchored" data-anchor-id="ajuste-resolución"><span class="header-section-number">C.8</span> Ajuste Resolución</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste resolución -------------------------------------------------------</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -573,8 +574,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># mapview(s, col.regions =colors_t2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="visualización-de-resultados" class="level2" data-number="B.9">
-<h2 data-number="B.9" class="anchored" data-anchor-id="visualización-de-resultados"><span class="header-section-number">B.9</span> Visualización de resultados</h2>
+<section id="visualización-de-resultados" class="level2" data-number="C.9">
+<h2 data-number="C.9" class="anchored" data-anchor-id="visualización-de-resultados"><span class="header-section-number">C.9</span> Visualización de resultados</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span>  <span class="fu">raster</span>(out_name)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">factorValues</span>(s, i)</span>
@@ -634,9 +635,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -701,6 +716,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -742,13 +843,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./iln.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Luminosidad Noc. (VIIRS)</span></span>
+      <a href="./calc_pob.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cálculo de Población</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./kde.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -756,6 +857,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright 2023, Denis Berroeta</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
   </div>
 </footer>
 

@@ -4,7 +4,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Población Urbana Rural
+# Población Urbana-Rural
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -17,7 +17,7 @@ suppressPackageStartupMessages(require(tidyr))
 
 ```
 
-## Introducción
+## Descripción General
 
 PAra los efectos de la siguiente explicación de procesamiento de información se definirà como área de estudio la región de Bío Bío, y en términos generales se define como el proceso de asignación de población urbano-rurarl por densidad de viviendas, para tener una metodología homogada para los análisis del presente estudio.
 
@@ -30,33 +30,7 @@ La metodología imputación de población por cantidad de viviendas en la regió
 -   Kernel Desnsity Estimation (KDE) de Viviendas Rurales
 -   Imputar La población a las celdas del KDE
 
-A continuación se explican los detalles y resultados por cada tipo de procesamiento:
-
-## Imputar información administrativa a viviendas rurales
-
-## Muestreo aleatorio de viviendas urbanas dentro de cada manzanas
-
-
-### Cálculo
-
-En el tapa de cálculo de la estimación de densidad por kernel de población se utilizarán los puntos que representan las viviendas con la variable asociada de población promedio por unidad territorial. A conuación se describen los pasos realidos:
-
--   Definción de Región de Estudio
--   Creación de Ventana de Trabajo
--   Cálculo de puntos pro ventanan de trabajo
--   Análisis de densidad ponderada por población
--   Transformación a resultados espaciales tipo raster
-
-TODO: Detallar cada paso.
-
-### Resultados
-
-
-![Kernel Density Estimation de Población en la Región del Bío Bío ajustado por valores comunales.](images/R08_kde_raw.png){fig-align="center" width="800"}
-
-## d. Imputar La población a las celdas del KDE
-
-Considerando que los valores resultantes del kernel density estimation corresponden a resultados de densidad de viviendas ponderadas por población, estos resultados fueron ponderados por población comunal, para poder tener los valores asosciados en magnitud a personas controlados por los totales comunales.
+Todos los pasos y detalles del procedimientos están registrados en @sec-calPob,  mientras que los resultados se pueden observar a continuación.
 
 
 ![Kernel Density Estimation de Población en la Región del Bío Bío ajustado por valores comunales.](images/R08_kde_pob.png){fig-align="center" width="800"}

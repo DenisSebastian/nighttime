@@ -1,5 +1,5 @@
 ---
-title: "Cobertura de Suelo MODIS"
+title: "Land Cover MODIS"
 subtitle: "Procedimiento adquisión de producto a nivel regional"
 editor_options: 
   chunk_output_type: console

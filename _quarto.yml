@@ -32,6 +32,7 @@ book:
     - references.qmd
   appendices:
     - iln.qmd
+    - calc_pob.qmd
     - calc_LC.qmd
     - kde.qmd
     

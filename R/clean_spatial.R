@@ -257,10 +257,6 @@ mapview(r_est_pob)
 
 writeRaster(r_est_pob, filename = "data/tif/R08_kde_pob.tif", overwrite = T)
 
-# 3. Homologar con raster LN ----------------------------------------------
-
-
-# 4. Guardar Resultados ---------------------------------------------------
 
 
 

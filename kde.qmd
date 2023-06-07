@@ -1,9 +1,11 @@
 ---
-title: "Kernel Density Estimation"
+subtitle: "Aproximación Metodológica"
 ---
 
+# Kernel Density Estimation {#sec-kde}
 
-## Kernel Desnsity Estimation (KDE) de Viviendas Rurales
+
+## Introducción
 
 Identificar el tipo de distribución que tiene a una variable es un paso fundamental en prácticamente todos los estudios que implican datos, son muchas las ventajas que tiene disponer de una función que describa aproximadamente los datos. Por ejemplo, se puede calcular la probabilidad (o densidad en el caso de variables aleatorias continuas) de que una observación tome un determinado valor. También es posible simular nuevos. valores.
 
@@ -27,7 +29,7 @@ $$
 
 -   $K$: es el Kernel, una función que define la forma y la distribución de la influencia (peso) que se asocian a cada observación. En los ejemplos anteriores se ha utilizado como kernel la distribución normal.
 
-## Aproximación Espacial de KDE  
+## Kernel Density Estimation Espacial 
 
 Para aplicar los KDE a casos espaciales, se tiene que entender que las variables aleatorias antes señaladas, ahora van a corresponder a eventos o condiciones físicas que ocurren en el espacio, por ende bajo un sistema de coordenadas, por lo cual el eje de coordenadas $x$ e $y$ que también intervienen como nuevas dimensiones, entonces los que se predente estimar una distribución multivariante.
 

@@ -14,7 +14,7 @@ suppressPackageStartupMessages(require(dplyr))
 suppressPackageStartupMessages(require(ggplot2))
 suppressPackageStartupMessages(require(plotly))
 suppressPackageStartupMessages(require(tidyr))
-
+options(warn = -1)
 ```
 
 
@@ -32,12 +32,14 @@ En resumen, este análisis estadístico de los indicadores de acceso a la electr
 ## Acceso a la Eletricidad General
 
 ```{r}
+
+suppressPackageStartupMessages(require(plotly))
 access_chl <- readRDS("data/rds/acc_electricity.rds") %>% 
    filter(country_code =="CHL"|country_code =="LCN") %>% 
   mutate(value = as.numeric(value)) %>% 
   # select(-country_name) %>% 
   pivot_wider(names_from = country_code, values_from = value)
-options(warn = -1)
+
 
 
 # access_chl$year <- as.character(access_chl$year)

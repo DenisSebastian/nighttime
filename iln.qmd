@@ -1,9 +1,10 @@
 ---
-title: "Luminosidad Noc. (VIIRS)"
 subtitle: "Procedimiento de Cálculo a nivel regional"
 editor_options: 
   chunk_output_type: console
 ---
+
+# Cálculo Luminosidad Noc. {#sec-calLN}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
@@ -58,7 +59,7 @@ Resolution Espacial:
 
 Bandas:
 
-```{r echo=FALSE}
+```{r echo=FALSE, eval = TRUE}
 
 
 
