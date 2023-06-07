@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nighttime Lights - Appendix A — Luminosidad Noc. (VIIRS)</title>
+<title>Nighttime Lights - Appendix A — Cálculo Luminosidad Noc.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./calc_LC.html" rel="next">
+<link href="./calc_pob.html" rel="next">
 <link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -96,6 +96,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -109,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iln.html">Appendices</a></li><li class="breadcrumb-item"><a href="./iln.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Luminosidad Noc. (VIIRS)</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iln.html">Appendices</a></li><li class="breadcrumb-item"><a href="./iln.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Cálculo Luminosidad Noc.</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -176,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pob.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana Rural</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana-Rural</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -240,19 +243,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iln.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Luminosidad Noc. (VIIRS)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Cálculo Luminosidad Noc.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calc_pob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cálculo de Población</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calc_LC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cobertura de Suelo MODIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Land Cover MODIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kde.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
   </div>
 </li>
       </ul>
@@ -288,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix A — Luminosidad Noc. (VIIRS)</h1>
+<h1 class="title"><span id="sec-calLN" class="quarto-section-identifier">Appendix A — Cálculo Luminosidad Noc.</span></h1>
 <p class="subtitle lead">Procedimiento de Cálculo a nivel regional</p>
 </div>
 
@@ -350,7 +359,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 <p>Bandas:</p>
 <div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
+<caption>Información de Producto Satelital</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">Name</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Units</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Min</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Max</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">avg_rad</td>
+<td style="text-align: center;">nanoWatts/cm2/sr</td>
+<td style="text-align: center;">-1.5*</td>
+<td style="text-align: center;">193565*</td>
+<td style="text-align: center;">Average DNB radiance values.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">cf_cvg</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">0*</td>
+<td style="text-align: center;">84*</td>
+<td style="text-align: center;">Cloud-free coverages; the total number of observations that went into each pixel. This band can be used to identify areas with low numbers of observations where the quality is reduced.</td>
+</tr>
+</tbody>
+</table>
 
+
+</div>
 </div>
 <ul>
 <li><em>Estimated min or max value</em></li>
@@ -766,8 +806,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./calc_LC.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cobertura de Suelo MODIS</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./calc_pob.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cálculo de Población</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

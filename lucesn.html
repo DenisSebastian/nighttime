@@ -81,14 +81,11 @@ div.csl-indent {
   }
 }</script>
 
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
 
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -164,7 +161,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pob.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana Rural</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana-Rural</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -228,19 +225,25 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iln.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Luminosidad Noc. (VIIRS)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Cálculo Luminosidad Noc.</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calc_pob.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cálculo de Población</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calc_LC.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Cobertura de Suelo MODIS</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Land Cover MODIS</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./kde.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
   </div>
 </li>
       </ul>
@@ -255,14 +258,14 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">4.1</span> Introducción</a></li>
+  <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link active" data-scroll-target="#descripción-general"><span class="header-section-number">4.1</span> Descripción General</a></li>
   <li><a href="#producto-satelital" id="toc-producto-satelital" class="nav-link" data-scroll-target="#producto-satelital"><span class="header-section-number">4.2</span> Producto Satelital</a></li>
-  <li><a href="#cálculo" id="toc-cálculo" class="nav-link" data-scroll-target="#cálculo"><span class="header-section-number">4.3</span> Cálculo</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados"><span class="header-section-number">4.3</span> Resultados</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -282,8 +285,8 @@ div.csl-indent {
 
 </header>
 
-<section id="introducción" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">4.1</span> Introducción</h2>
+<section id="descripción-general" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="descripción-general"><span class="header-section-number">4.1</span> Descripción General</h2>
 <p>Uno de los conjuntos de datos de observación de la Tierra más populares últimamente entre los economistas es el de las luces nocturnas. Los investigadores han hallado correlaciones positivas entre los datos de las luces nocturnas y diversas variables socioeconómicas en distintos países. En dos artículos, <span class="citation" data-cites="Ghosh_2013">Ghosh et al. (<a href="references.html#ref-Ghosh_2013" role="doc-biblioref">2013</a>)</span> y <span class="citation" data-cites="Huang_2014">Huang et al. (<a href="references.html#ref-Huang_2014" role="doc-biblioref">2014</a>)</span> citan ejemplos como el consumo de electricidad, el grado de electrificación, las emisiones de dióxido de carbono, el PIB, el PIB per cápita, la población urbana, la población total y la incidencia de la pobreza.</p>
 <p>Considerando que varios estudios han demostrado que la producción de luz nocturna está estrechamente relacionada con la capacidad de generación de electricidad y la actividad económica a escala regional y nacional <span class="citation" data-cites="Elvidge_1997">Elvidge et al. (<a href="references.html#ref-Elvidge_1997" role="doc-biblioref">1997</a>)</span>.</p>
 <p>Considerando lo anterior se utilizará el producto satelital <a href="https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_MONTHLY_V1_VCMSLCFG">VIIRS Stray Light Corrected Nighttime Day/Night Band Composites Version 1</a> del año 2016, y se fitrará espacialmente por la región del Bío Bío.</p>
@@ -291,48 +294,16 @@ div.csl-indent {
 <section id="producto-satelital" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="producto-satelital"><span class="header-section-number">4.2</span> Producto Satelital</h2>
 <p>El producto satelital <a href="https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_MONTHLY_V1_VCMSLCFG">VIIRS Stray Light Corrected Nighttime Day/Night Band Composites Version 1</a>, se encuentra disponible de 2014-01-01 hasta 2023-01-01 con una periodicidad mensual, con una resolución espacial de 463.83 metros, cuyo proveedor es el <a href="https://eogdata.mines.edu/download_dnb_composites.html">Earth Observation Group, Payne Institute for Public Policy, Colorado School of Mines</a>. El producto satelital esta corresponde a imágenes compuestas de radiancia media mensual utilizando datos nocturnos del Visible Infrared Imaging Radiometer Suite (VIIRS) Day/Night Band (DNB).</p>
-<p>Como estos datos se componen mensualmente, hay muchas zonas del planeta en las que es imposible obtener una cobertura de datos de buena calidad para ese mes. Esto puede deberse a la nubosidad, especialmente en las regiones tropicales, o a la iluminación solar, como ocurre hacia los polos en sus respectivos meses de verano. Por lo tanto, se recomienda que los usuarios de estos datos utilicen la banda ‘cf_cvg’ y no asuman que un valor de cero en la imagen de radiancia media significa que no se observaron luces.</p>
-<p>Bandas:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
-<caption>Información de Producto Satelital</caption>
-<thead>
-<tr class="header">
-<th style="text-align: center;" data-quarto-table-cell-role="th">Name</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Units</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Min</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Max</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">avg_rad</td>
-<td style="text-align: center;">nanoWatts/cm2/sr</td>
-<td style="text-align: center;">-1.5*</td>
-<td style="text-align: center;">193565*</td>
-<td style="text-align: center;">Average DNB radiance values.</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">cf_cvg</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">0*</td>
-<td style="text-align: center;">84*</td>
-<td style="text-align: center;">Cloud-free coverages; the total number of observations that went into each pixel. This band can be used to identify areas with low numbers of observations where the quality is reduced.</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-<ul>
-<li><em>Estimated min or max value</em></li>
-</ul>
 </section>
-<section id="cálculo" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="cálculo"><span class="header-section-number">4.3</span> Cálculo</h2>
+<section id="resultados" class="level2 page-columns page-full" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="resultados"><span class="header-section-number">4.3</span> Resultados</h2>
+<p>El procedimiento detallado de adquisión y transformación de ester producto satelital, está registrado en <a href="iln.html"><span>Appendix&nbsp;A</span></a>, mientras que sus resultados se observan en <a href="#fig-LandCover">Figure&nbsp;<span>4.1</span></a> .</p>
+<div id="fig-LandCover" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/R08_VIIRS_avg_raw.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption margin-caption">Figure&nbsp;4.1: Resultados de la Luminosisdad Nocturna en la Región del Bío Bío</figcaption>
+</figure>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -590,7 +561,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./pob.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana Rural</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Población Urbana-Rural</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
