@@ -17,7 +17,7 @@ Hasta la fecha, la mayoría de los estudios se han realizado en el mundo industr
 
 **Propuesta:**
 
-Inspiración y referencia, el estudio _"A high-resolution gridded dataset to assess electrification in sub-Saharan africa"_ @Falchetta_2019
+Inspiración y referencia, el estudio _"A high-resolution gridded dataset to assess electrification in sub-Saharan africa"_ @Falchetta_2019. Versión online [https://www.nature.com/articles/s41597-019-0122-6.pdf](https://www.nature.com/articles/s41597-019-0122-6.pdf)
 
 Esta investigación propone que utilizando distribuciones de probabilidad de radiación de luz, definimos niveles de consumo de electricidad para áreas urbanas y rurales y estimamos la división de consumidores por nivel que viven en áreas electrificadas. Este enfoque proporciona nueva información sobre la distribución espacial y evolución temporal del acceso a electricidad, y una medida de su calidad más allá del acceso binario. 
 

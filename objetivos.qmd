@@ -3,7 +3,7 @@
 
 ## Objetivo General
 
-Crear un índice que evidiencia el acceso de electrificación a las personas en zona rural y urbana para la región del Bío Bío utulizando percepción remota.
+Crear un índice que evidiencia el acceso alectricidad de las personas en zona rural y urbana para la región del Bío Bío utilizando percepción remota.
 
 ## Objetivos Específicos
 
