@@ -167,7 +167,7 @@ mapview(ae, col.region = "darkgreen")
 
 
 
-### Producto Satelital
+### Ambiente Google Earth Engine
 
 
 ```{r}
@@ -185,10 +185,30 @@ ae_ee <- ae %>% sf_as_ee()
 ```
 
 
+## Noise Correction
+
+
+Ppara eliminar el ruido de calibración y las luces efímeras, tal como se analiza en la literatura pertinente @Doll_2010 @Min_2013, por lo cual se fijó un límite inferior de ruido en 0.25 $\mu W \cdot cm^{-2} \cdot sr^{-1}$ para 2016.
+
+La discrepancia en los límites de ruido se justifica por el aumento del ruido de los datos obtenidos a partir de 2017. Según la opinión de los expertos, esto se debe a los ajustes de calibración en la corrección lunar y al lanzamiento de un nuevo satélite equipado con VIIRS (JPSS J1) en 2017 (como se analiza en @Miller_2018). La dispersión en el conjunto de límites inferiores de ruido antes y después de 2017 se determinó a partir del examen de píxeles de radiancia cero por definición -como dentro de grandes masas de agua- que, no obstante, presentan una radiancia sistemáticamente positiva para los datos desde 2017, y una radiancia sistemáticamente cero para los datos anteriores. 
+
+
+```{r}
+replacement = ee$Image(0);
+
+conditional = function(image) {
+  return(image$where(image$lt(0.25), replacement))
+}
+
+```
+
+## Producto Satelital
+
 ```{r }
 dataset <-  ee$ImageCollection(image_name)$
   filterDate('2016-10-01', '2016-12-01')$
   select("avg_rad")$
+  map(conditional)$ # aplicació noise correction
   median()
 
 imagen <- dataset$clip(ae_ee)
@@ -236,7 +256,9 @@ img <- dl_image(image_ee = imagen, roi = region_sf,
 raster_viirs <-  raster(img$dsn)
 ```
 
-# Ajuste Resolución
+
+
+## Ajuste Resolución
 
 
 ```{r}

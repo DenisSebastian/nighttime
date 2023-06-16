@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -99,6 +118,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -146,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -264,6 +299,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./paper_r1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Paper de Referencia</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -282,13 +323,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#recursos-y-parámetros-generales" id="toc-recursos-y-parámetros-generales" class="nav-link" data-scroll-target="#recursos-y-parámetros-generales"><span class="header-section-number">A.4</span> Recursos y parámetros generales</a>
   <ul class="collapse">
   <li><a href="#definición-de-área-de-estudio" id="toc-definición-de-área-de-estudio" class="nav-link" data-scroll-target="#definición-de-área-de-estudio"><span class="header-section-number">A.4.1</span> Definición de Área de Estudio</a></li>
-  <li><a href="#producto-satelital-1" id="toc-producto-satelital-1" class="nav-link" data-scroll-target="#producto-satelital-1"><span class="header-section-number">A.4.2</span> Producto Satelital</a></li>
+  <li><a href="#ambiente-google-earth-engine" id="toc-ambiente-google-earth-engine" class="nav-link" data-scroll-target="#ambiente-google-earth-engine"><span class="header-section-number">A.4.2</span> Ambiente Google Earth Engine</a></li>
   </ul></li>
-  <li><a href="#descarga-de-raster" id="toc-descarga-de-raster" class="nav-link" data-scroll-target="#descarga-de-raster"><span class="header-section-number">A.5</span> Descarga de Raster</a></li>
-  <li><a href="#ajuste-resolución" id="toc-ajuste-resolución" class="nav-link" data-scroll-target="#ajuste-resolución"><span class="header-section-number">B</span> Ajuste Resolución</a>
-  <ul class="collapse">
-  <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><span class="header-section-number">B.1</span> Visualización de resultados</a></li>
-  </ul></li>
+  <li><a href="#noise-correction" id="toc-noise-correction" class="nav-link" data-scroll-target="#noise-correction"><span class="header-section-number">A.5</span> Noise Correction</a></li>
+  <li><a href="#producto-satelital-1" id="toc-producto-satelital-1" class="nav-link" data-scroll-target="#producto-satelital-1"><span class="header-section-number">A.6</span> Producto Satelital</a></li>
+  <li><a href="#descarga-de-raster" id="toc-descarga-de-raster" class="nav-link" data-scroll-target="#descarga-de-raster"><span class="header-section-number">A.7</span> Descarga de Raster</a></li>
+  <li><a href="#ajuste-resolución" id="toc-ajuste-resolución" class="nav-link" data-scroll-target="#ajuste-resolución"><span class="header-section-number">A.8</span> Ajuste Resolución</a></li>
+  <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><span class="header-section-number">A.9</span> Visualización de resultados</a></li>
   </ul>
 </nav>
     </div>
@@ -448,8 +489,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><img src="images/R08_roi.png" class="img-fluid"></p>
 </section>
-<section id="producto-satelital-1" class="level3" data-number="A.4.2">
-<h3 data-number="A.4.2" class="anchored" data-anchor-id="producto-satelital-1"><span class="header-section-number">A.4.2</span> Producto Satelital</h3>
+<section id="ambiente-google-earth-engine" class="level3" data-number="A.4.2">
+<h3 data-number="A.4.2" class="anchored" data-anchor-id="ambiente-google-earth-engine"><span class="header-section-number">A.4.2</span> Ambiente Google Earth Engine</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgee)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>email_gee <span class="ot">=</span> <span class="st">'denis.berroeta@gmail.com'</span></span>
@@ -459,31 +500,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ae_ee <span class="ot">&lt;-</span> ae <span class="sc">%&gt;%</span> <span class="fu">sf_as_ee</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="noise-correction" class="level2" data-number="A.5">
+<h2 data-number="A.5" class="anchored" data-anchor-id="noise-correction"><span class="header-section-number">A.5</span> Noise Correction</h2>
+<p>Ppara eliminar el ruido de calibración y las luces efímeras, tal como se analiza en la literatura pertinente <span class="citation" data-cites="Doll_2010">Doll and Pachauri (<a href="references.html#ref-Doll_2010" role="doc-biblioref">2010</a>)</span> <span class="citation" data-cites="Min_2013">Min et al. (<a href="references.html#ref-Min_2013" role="doc-biblioref">2013</a>)</span>, por lo cual se fijó un límite inferior de ruido en 0.25 <span class="math inline">\mu W \cdot cm^{-2} \cdot sr^{-1}</span> para 2016.</p>
+<p>La discrepancia en los límites de ruido se justifica por el aumento del ruido de los datos obtenidos a partir de 2017. Según la opinión de los expertos, esto se debe a los ajustes de calibración en la corrección lunar y al lanzamiento de un nuevo satélite equipado con VIIRS (JPSS J1) en 2017 (como se analiza en <span class="citation" data-cites="Miller_2018">Miller et al. (<a href="references.html#ref-Miller_2018" role="doc-biblioref">2018</a>)</span>). La dispersión en el conjunto de límites inferiores de ruido antes y después de 2017 se determinó a partir del examen de píxeles de radiancia cero por definición -como dentro de grandes masas de agua- que, no obstante, presentan una radiancia sistemáticamente positiva para los datos desde 2017, y una radiancia sistemáticamente cero para los datos anteriores.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span>  ee<span class="sc">$</span><span class="fu">ImageCollection</span>(image_name)<span class="sc">$</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filterDate</span>(<span class="st">'2016-10-01'</span>, <span class="st">'2016-12-01'</span>)<span class="sc">$</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"avg_rad"</span>)<span class="sc">$</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>imagen <span class="ot">&lt;-</span> dataset<span class="sc">$</span><span class="fu">clip</span>(ae_ee)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>replacement <span class="ot">=</span> ee<span class="sc">$</span><span class="fu">Image</span>(<span class="dv">0</span>);</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>conditional <span class="ot">=</span> <span class="cf">function</span>(image) {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(image<span class="sc">$</span><span class="fu">where</span>(image<span class="sc">$</span><span class="fu">lt</span>(<span class="fl">0.25</span>), replacement))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="producto-satelital-1" class="level2" data-number="A.6">
+<h2 data-number="A.6" class="anchored" data-anchor-id="producto-satelital-1"><span class="header-section-number">A.6</span> Producto Satelital</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>palette_viirs <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'0602ff'</span>, <span class="st">'235cb1'</span>, <span class="st">'307ef3'</span>, <span class="st">'269db1'</span>, <span class="st">'30c8e2'</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'32d3ef'</span>, <span class="st">'3ae237'</span>,<span class="st">'b5e22e'</span>, <span class="st">'d6e21f'</span>, <span class="st">'fff705'</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'ffd611'</span>, <span class="st">'ffb613'</span>, <span class="st">'ff8b13'</span>, <span class="st">'ff6e08'</span>, <span class="st">'ff500d'</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'ff0000'</span>, <span class="st">'de0101'</span>, <span class="st">'c21301'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"#"</span>, .)</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span>  ee<span class="sc">$</span><span class="fu">ImageCollection</span>(image_name)<span class="sc">$</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filterDate</span>(<span class="st">'2016-10-01'</span>, <span class="st">'2016-12-01'</span>)<span class="sc">$</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"avg_rad"</span>)<span class="sc">$</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(conditional)<span class="sc">$</span> <span class="co"># aplicació noise correction</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>()</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>vis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">palette =</span> palette_viirs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>imagen <span class="ot">&lt;-</span> dataset<span class="sc">$</span><span class="fu">clip</span>(ae_ee)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> ae_ee<span class="sc">$</span><span class="fu">geometry</span>()<span class="sc">$</span><span class="fu">bounds</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>palette_viirs <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'0602ff'</span>, <span class="st">'235cb1'</span>, <span class="st">'307ef3'</span>, <span class="st">'269db1'</span>, <span class="st">'30c8e2'</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'32d3ef'</span>, <span class="st">'3ae237'</span>,<span class="st">'b5e22e'</span>, <span class="st">'d6e21f'</span>, <span class="st">'fff705'</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'ffd611'</span>, <span class="st">'ffb613'</span>, <span class="st">'ff8b13'</span>, <span class="st">'ff6e08'</span>, <span class="st">'ff500d'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'ff0000'</span>, <span class="st">'de0101'</span>, <span class="st">'c21301'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="st">"#"</span>, .)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>vis <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">60</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">palette =</span> palette_viirs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> ae_ee<span class="sc">$</span><span class="fu">geometry</span>()<span class="sc">$</span><span class="fu">bounds</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Visualización del producto satelital</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Map<span class="sc">$</span><span class="fu">centerObject</span>(region, <span class="at">zoom =</span> <span class="dv">11</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Map<span class="sc">$</span><span class="fu">addLayer</span>(imagen, vis, <span class="at">name =</span> <span class="st">"Nighttime"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Map<span class="sc">$</span><span class="fu">centerObject</span>(region, <span class="at">zoom =</span> <span class="dv">11</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Map<span class="sc">$</span><span class="fu">addLayer</span>(imagen, vis, <span class="at">name =</span> <span class="st">"Nighttime"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -491,69 +549,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-</section>
-<section id="descarga-de-raster" class="level2" data-number="A.5">
-<h2 data-number="A.5" class="anchored" data-anchor-id="descarga-de-raster"><span class="header-section-number">A.5</span> Descarga de Raster</h2>
+<section id="descarga-de-raster" class="level2" data-number="A.7">
+<h2 data-number="A.7" class="anchored" data-anchor-id="descarga-de-raster"><span class="header-section-number">A.7</span> Descarga de Raster</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">dl_image</span>(<span class="at">image_ee =</span> imagen, <span class="at">roi =</span> region_sf,</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> year, <span class="at">n_region =</span> n_region,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">description_d =</span> description_d, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">folder_name_d =</span> folder_name_d,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">path_out =</span> path_out, </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale_r =</span> scale_r)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>raster_viirs <span class="ot">&lt;-</span>  <span class="fu">raster</span>(img<span class="sc">$</span>dsn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>img <span class="ot">&lt;-</span> <span class="fu">dl_image</span>(<span class="at">image_ee =</span> imagen, <span class="at">roi =</span> region_sf,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">year =</span> year, <span class="at">n_region =</span> n_region,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">description_d =</span> description_d, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">folder_name_d =</span> folder_name_d,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">path_out =</span> path_out, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">scale_r =</span> scale_r)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>raster_viirs <span class="ot">&lt;-</span>  <span class="fu">raster</span>(img<span class="sc">$</span>dsn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="ajuste-resolución" class="level1" data-number="B">
-<h1 data-number="B"><span class="header-section-number">B</span> Ajuste Resolución</h1>
+<section id="ajuste-resolución" class="level2" data-number="A.8">
+<h2 data-number="A.8" class="anchored" data-anchor-id="ajuste-resolución"><span class="header-section-number">A.8</span> Ajuste Resolución</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste resolución -------------------------------------------------------</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># reproject</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>cp_r <span class="ot">&lt;-</span> raster_viirs</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>crs_utm <span class="ot">&lt;-</span> <span class="st">"+proj=utm +zone=19 +south +datum=WGS84 +units=m +no_defs"</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">crs</span>(raster_viirs)<span class="sc">@</span>projargs <span class="sc">!=</span> crs_utm){</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  cp_r <span class="ot">&lt;-</span> <span class="fu">projectRaster</span>(raster_viirs, <span class="at">crs =</span> crs_utm)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># copia raster</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> cp_r</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(r) <span class="ot">&lt;-</span> scale_r_out</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">resample</span>(cp_r, r, <span class="at">method =</span> <span class="st">"bilinear"</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span>  <span class="fu">round</span>(s)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>s[s<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(s,  <span class="at">filename =</span> out_name, <span class="at">overwrite=</span><span class="cn">TRUE</span>)</span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mapview</span>(s, <span class="at">col.regions =</span>palette_viirs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="visualización-de-resultados" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="visualización-de-resultados"><span class="header-section-number">B.1</span> Visualización de resultados</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span>  <span class="fu">raster</span>(out_name)</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste resolución -------------------------------------------------------</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># rastero to df (na omit)</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>viirs_raw <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">as.data.frame</span>(s, <span class="at">xy =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(viirs_raw)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"layer"</span>  </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>viirs_raw<span class="sc">$</span>layer <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(viirs_raw<span class="sc">$</span>layer)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>map_lc <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">data =</span> viirs_raw , </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> layer)) <span class="sc">+</span> </span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"VIIRS"</span>,<span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()<span class="sc">+</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"R08: VIIRS avg"</span>) ) <span class="sc">+</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"gray80"</span>), </span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"gray80"</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># reproject</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cp_r <span class="ot">&lt;-</span> raster_viirs</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>crs_utm <span class="ot">&lt;-</span> <span class="st">"+proj=utm +zone=19 +south +datum=WGS84 +units=m +no_defs"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">crs</span>(raster_viirs)<span class="sc">@</span>projargs <span class="sc">!=</span> crs_utm){</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  cp_r <span class="ot">&lt;-</span> <span class="fu">projectRaster</span>(raster_viirs, <span class="at">crs =</span> crs_utm)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># copia raster</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> cp_r</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">res</span>(r) <span class="ot">&lt;-</span> scale_r_out</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">resample</span>(cp_r, r, <span class="at">method =</span> <span class="st">"bilinear"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span>  <span class="fu">round</span>(s)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>s[s<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">=</span> <span class="dv">0</span></span>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>map_lc</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> map_lc,<span class="at">filename =</span> <span class="st">"images/R08_VIIRS_avg_raw.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(s,  <span class="at">filename =</span> out_name, <span class="at">overwrite=</span><span class="cn">TRUE</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="fu">mapview</span>(s, <span class="at">col.regions =</span>palette_viirs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualización-de-resultados" class="level2" data-number="A.9">
+<h2 data-number="A.9" class="anchored" data-anchor-id="visualización-de-resultados"><span class="header-section-number">A.9</span> Visualización de resultados</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span>  <span class="fu">raster</span>(out_name)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># rastero to df (na omit)</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>viirs_raw <span class="ot">&lt;-</span> raster<span class="sc">::</span><span class="fu">as.data.frame</span>(s, <span class="at">xy =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(viirs_raw)[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"layer"</span>  </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>viirs_raw<span class="sc">$</span>layer <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(viirs_raw<span class="sc">$</span>layer)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>map_lc <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">data =</span> viirs_raw , </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">fill =</span> layer)) <span class="sc">+</span> </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">name =</span> <span class="st">"VIIRS"</span>,<span class="at">option =</span> <span class="st">"B"</span>)<span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()<span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"R08: VIIRS avg"</span>) ) <span class="sc">+</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"gray80"</span>), </span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"gray80"</span>))</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>map_lc</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> map_lc,<span class="at">filename =</span> <span class="st">"images/R08_VIIRS_avg_raw.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -562,7 +620,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Doll_2010" class="csl-entry" role="listitem">
+Doll, Christopher N. H., and Shonali Pachauri. 2010. <span>“Estimating Rural Populations Without Access to Electricity in Developing Countries Through Night-Time Light Satellite Imagery.”</span> <em>Energy Policy</em> 38 (10): 5661–70. <a href="https://doi.org/10.1016/j.enpol.2010.05.014">https://doi.org/10.1016/j.enpol.2010.05.014</a>.
+</div>
+<div id="ref-Miller_2018" class="csl-entry" role="listitem">
+Miller, Steven D., William C. Straka, Jia Yue, Curtis J. Seaman, Shuang Xu, Christopher D. Elvidge, Lars Hoffmann, and Irfan Azeem. 2018. <span>“The Dark Side of Hurricane Matthew: Unique Perspectives from the <span>VIIRS</span> Day/Night Band.”</span> <em>Bulletin of the American Meteorological Society</em> 99 (12): 2561–74. <a href="https://doi.org/10.1175/bams-d-17-0097.1">https://doi.org/10.1175/bams-d-17-0097.1</a>.
+</div>
+<div id="ref-Min_2013" class="csl-entry" role="listitem">
+Min, Brian, Kwawu Mensan Gaba, Ousmane Fall Sarr, and Alassane Agalassou. 2013. <span>“Detection of Rural Electrification in Africa Using <span>DMSP</span>-<span>OLS</span> Night Lights Imagery.”</span> <em>International Journal of Remote Sensing</em> 34 (22): 8118–41. <a href="https://doi.org/10.1080/01431161.2013.833358">https://doi.org/10.1080/01431161.2013.833358</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->

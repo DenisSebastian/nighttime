@@ -79,44 +79,6 @@ resumen_base <- function(base, name_base, n_samples = 5){
   
 }
 
-# tegs <- read_rds("data/TEGS.rds")
-# resumen_tegs <- resumen_base(tegs, name_base = "TEGS_BASE")
-# resumen_tegs
-
-
-
-
-## funciones de uso general
-
-# Si no existe directorio lo crea
-make_dir <- function(path){
-  if (!dir.exists(path)) dir.create(path, recursive = TRUE)
-}
-
-# transformar -999 a NA
-fix_missing <- function(x) {
-  if(is.numeric(x)){
-    x[x == -999] <- NA
-    
-  }
-  return(x)
-}
-
-
-# transformar NA a 0
-fix_NA_0 <- function(x) {
-  x[is.na(x)] <- 0
-  return(x)
-}
-
-
-
-# Reeplaza puntos pomas
-pto_por_coma <- function(x){
-  format(x, big.mark = ".", decimal.mark = "," ,
-         scientific = FALSE)
-  
-}
 
 
 # Cuensta duplicados por columna ------------------------------------------
@@ -132,32 +94,8 @@ duplicados <- function(file,columna){
   return(d)
 }
 
-
-simpleCap <- function(x) {
-  s <- strsplit(x, " ")[[1]]
-  paste(toupper(substring(s, 1, 1)), substring(s, 2),
-        sep = "", collapse = " ")
-}
-
 sf_toupper <-  function(sf_object){
   names(sf_object)[1:(ncol(sf_object)-1)] <- toupper(names(sf_object)[1:(ncol(sf_object)-1)])
   return(sf_object)
 }
 
-# read delitos rds
-
-read_delitos <- function(path_data = "data/delitos/delitos_base/", year){
-  delitos <- readRDS(paste0(path_data, "delitos_", year, ".rds"))
-  return(delitos)
-}
-
-
-# función paara saber catidad de acuerdo un porcentaje
-porc_df <- function(dataframe, porcentaje){
-  if(porcentaje>100){
-    stop("Porcentaje NO puede ser mayor que 100")
-  }else{
-    num <- round(nrow(dataframe)*(porcentaje/100))
-  }
-  return(num)
-}

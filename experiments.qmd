@@ -1,9 +1,68 @@
 ---
 subtitle: "Modelo de Datos"
+fig-cap-location: "bottom"
 ---
 
 # Experimentación
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE)
+library(dplyr)
+library(sf)
+library(raster)
+library(mapview)
+library(ggplot2)
+library(viridis)
+
+```
+
+
+## Introducción
+
+Observando el diagrama posterior se procederña definir las zonas donde existen personas residiendo y su nivel emisividad por eletribicación es baja. Como se realizado a lo largo del presente documento se considera como región de estudio la región del Bío Bío de Chile. 
 
 ![El diagrama de flujo representa las diferentes etapas, entradas de datos y salidas en la generación y validación de los datos. Azul: variables de teledetección; rojo: etapas de procesamiento; morado: métricas de salida; verde: datos de salida; blanco: conjuntos de datos de validación y apoyo; gris: etapas. @Falchetta_2019](images/workflow.png){fig-aling="center"}
+
+## Insumos Claves
+
+
+A continuación se presentan los insumos que se utilizarán para realizar la operación de definir las zonas con personas con necesidad de servicios de electrificación.
+
+::: {#fig-insumosbas layout-ncol=2}
+
+![Población](images/R08_LandScanGlobal_2021_100.png){#fig-landscan}
+
+![Emisividad Luz Nocturna](images/R08_VIIRS_2021_100.png){#fig-hanno}
+
+Insumos básicos
+:::
+
+
+## Cálculo
+
+
+La ecuación utilizada para identificar zonas donde existe población y que su emisividad sea menor a $0.1$ de $nanoWatts/cm^2/sr$, como se observa en la siguiente gráfica.
+
+
+![Representación de la ecuación para identificación de zonas carentes de servivios de electricidad](images/formula.png){width=600}
+
+
+
+## Resultados
+
+```{r}
+pb_ls_2021 <-  raster("data/tif/R08_LandScanGlobal_2021_100.tif")
+ln_2021 <-  raster("data/tif/R08_VIIRS_2021_100.tif")
+noaccess <- function(pob, u_pob = 1, ln, u_ln= 0.1) {
+  mask <- pob >= u_pob & ln <  u_ln
+  # mask[mask == 0] <- NA
+  pop_masked <- mask(pob, mask, maskvalue=0)
+  return(pop_masked)
+}
+
+nacc_ls_2021 <-  noaccess(pob = pb_ls_2021,u_pob = 100, ln = ln_2021, u_ln = 1)
+mapview(nacc_ls_2021) + mapview(pb_ls_2021,  hide = TRUE) + mapview(ln_2021, hide = TRUE)
+
+
+```
 

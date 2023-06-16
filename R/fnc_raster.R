@@ -85,3 +85,33 @@ make_mosaic <-  function(path_in, roi,
   
   return(img)
 }
+
+
+
+# reproyectar raster
+reproject_utm <- function(raster, crs_string=NULL){
+  if(is.null(crs_string)){
+    crs_string ="+proj=utm +zone=19 +south +datum=WGS84 +units=m +no_defs"
+  }
+  if(crs(raster)@projargs != crs_string){
+    raster <- projectRaster(raster, crs = crs_string)
+  }
+  return(raster)
+}
+
+# resamplear con template
+
+resample_res <-  function(r_ori, r_template, method="bilinear", 
+                          round_out = F){
+  
+  # Trasnformar crs UTM 19 S
+  r_ori <- reproject_utm(r_ori)
+  r_template <- reproject_utm(r_template)
+  
+  r_adj <- raster::resample(r_ori, r_template, method = method)
+  if(isTRUE(round_out)){
+    r_adj <- round(r_adj)
+  }
+  return(r_adj) 
+  
+}
