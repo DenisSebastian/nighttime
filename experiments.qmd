@@ -3,7 +3,7 @@ subtitle: "Modelo de Datos"
 fig-cap-location: "bottom"
 ---
 
-# Experimentación
+# Experimentación {#sec-experiments}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, eval = TRUE)
@@ -32,7 +32,7 @@ A continuación se presentan los insumos que se utilizarán para realizar la ope
 
 ![Población](images/R08_LandScanGlobal_2021_100.png){#fig-landscan}
 
-![Emisividad Luz Nocturna](images/R08_VIIRS_2021_100.png){#fig-hanno}
+![Emisividad Luz Nocturna](images/R08_VIIRS_2021_100.png){#fig-luznoc}
 
 Insumos básicos
 :::

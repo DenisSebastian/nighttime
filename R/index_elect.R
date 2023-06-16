@@ -57,8 +57,8 @@ mapview(nacc_kde) + mapview(pb,  hide = TRUE) + mapview(ln, hide = TRUE)
 nacc_ls  <-  noaccess(pob = pb_ls, u_pob = 100, ln = ln , u_ln = 0.1)
 mapview(nacc_ls,   alpha.regions = 1) + mapview(pb_ls,  hide = TRUE) + mapview(ln, hide = TRUE)
 
-nacc_wp_2021 <-  noaccess(pob = pb_ls_2021,u_pob = 100, ln = ln_2021, u_ln = 1)
-mapview(nacc_wp_2021) + mapview(pb_ls_2021,  hide = TRUE) + mapview(ln, hide = TRUE)
+nacc_ls_2021 <-  noaccess(pob = pb_ls_2021,u_pob = 100, ln = ln_2021, u_ln = 1)
+mapview(nacc_ls_2021) + mapview(pb_ls_2021,  hide = TRUE) + mapview(ln, hide = TRUE)
 
 
 

@@ -6,6 +6,7 @@
 - Introducción
 - Objetivos
 - Materiales 
+   - Contexto Global
    - Luces Nocturas
    - Población
    - Land Cover
@@ -14,13 +15,27 @@
   - Resultados
 - Conclusiones
 - Apendices
-  - Índice de Luces Nocturnas
-  
-  
-<!-- ## Autor: {.unnumbered} -->
+  - Cálculo de Luminocidad Nocturna
+  - Cálculo de Población
+  - Cálculo de Land Cover
+  - Identidicación de Zonas
+  - Kernel Densityy estaimation
+  - Paper de Referencias
 
-<!-- **{{< var author.name >}}**.    -->
-<!-- {{< var author.cargo >}},   -->
-<!-- email: {{< var author.email >}} -->
+
+
+TODO:
+
+- Land Scan Documentación
+- Cálculo de índice
+- Validación
+- Resultados
+  
+  
+## Autor: {.unnumbered}
+
+**{{< var author.name >}}**.
+{{< var author.cargo >}},
+email: {{< var author.email >}}
 
 <!-- Ingeniero en Prevención de Riesgos, Magíster en Inteligencia Artificial, Doctorado y Master in Data Science (cursando). Experiencia en Geoestadística, Percepción Remota, Análisis Criminal y Redes Neuronales Convolucionales. Tema de Tesis Detección de Cambios en Imágenes Radar con técnicas de deep learning. -->

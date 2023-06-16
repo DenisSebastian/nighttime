@@ -11,7 +11,7 @@
     "href": "index.html#contenidos",
     "title": "Nighttime Lights",
     "section": "Contenidos",
-    "text": "Contenidos\n\nIntroducción\nObjetivos\nMateriales\n\nLuces Nocturas\nPoblación\nLand Cover\n\nMétodos\n\nExperimentación\nResultados\n\nConclusiones\nApendices\n\nÍndice de Luces Nocturnas"
+    "text": "Contenidos\n\nIntroducción\nObjetivos\nMateriales\n\nContexto Global\nLuces Nocturas\nPoblación\nLand Cover\n\nMétodos\n\nExperimentación\nResultados\n\nConclusiones\nApendices\n\nCálculo de Luminocidad Nocturna\nCálculo de Población\nCálculo de Land Cover\nIdentidicación de Zonas\nKernel Densityy estaimation\nPaper de Referencias\n\n\nTODO:\n\nLand Scan Documentación\nCálculo de índice\nValidación\nResultados"
   },
   {
     "objectID": "intro.html",
@@ -112,11 +112,32 @@
     "text": "6.4 Visualización de Resultados Landcover T2\nSe realizó un proceso de adquisión de datos de cobertura de uso de suelo, filtrándose por región de estudio y año, para luego transformar para entregar un resultado en formato correcto, lo cual quedó registrado en la Section C.3.\n\n\n\n\n\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
   },
   {
-    "objectID": "experiments.html",
-    "href": "experiments.html",
+    "objectID": "experiments.html#introducción",
+    "href": "experiments.html#introducción",
     "title": "7  Experimentación",
-    "section": "",
-    "text": "El diagrama de flujo representa las diferentes etapas, entradas de datos y salidas en la generación y validación de los datos. Azul: variables de teledetección; rojo: etapas de procesamiento; morado: métricas de salida; verde: datos de salida; blanco: conjuntos de datos de validación y apoyo; gris: etapas. Falchetta et al. (2019)\n\n\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
+    "section": "7.1 Introducción",
+    "text": "7.1 Introducción\nObservando el diagrama posterior se procederña definir las zonas donde existen personas residiendo y su nivel emisividad por eletribicación es baja. Como se realizado a lo largo del presente documento se considera como región de estudio la región del Bío Bío de Chile.\n\n\n\nEl diagrama de flujo representa las diferentes etapas, entradas de datos y salidas en la generación y validación de los datos. Azul: variables de teledetección; rojo: etapas de procesamiento; morado: métricas de salida; verde: datos de salida; blanco: conjuntos de datos de validación y apoyo; gris: etapas. Falchetta et al. (2019)"
+  },
+  {
+    "objectID": "experiments.html#insumos-claves",
+    "href": "experiments.html#insumos-claves",
+    "title": "7  Experimentación",
+    "section": "7.2 Insumos Claves",
+    "text": "7.2 Insumos Claves\nA continuación se presentan los insumos que se utilizarán para realizar la operación de definir las zonas con personas con necesidad de servicios de electrificación.\n\n\n\n\n\n\n\n(a) Población\n\n\n\n\n\n\n\n(b) Emisividad Luz Nocturna\n\n\n\n\nFigure 7.1: Insumos básicos"
+  },
+  {
+    "objectID": "experiments.html#cálculo",
+    "href": "experiments.html#cálculo",
+    "title": "7  Experimentación",
+    "section": "7.3 Cálculo",
+    "text": "7.3 Cálculo\nLa ecuación utilizada para identificar zonas donde existe población y que su emisividad sea menor a 0.1 de nanoWatts/cm^2/sr, como se observa en la siguiente gráfica.\n\n\n\nRepresentación de la ecuación para identificación de zonas carentes de servivios de electricidad"
+  },
+  {
+    "objectID": "experiments.html#resultados",
+    "href": "experiments.html#resultados",
+    "title": "7  Experimentación",
+    "section": "7.4 Resultados",
+    "text": "7.4 Resultados\n\n\n\n\n\n\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
   },
   {
     "objectID": "references.html",
@@ -329,38 +350,38 @@
     "text": "E.3 Methods\nFuentes de datos y herramientas de procesamiento. Las fuentes de datos, descritas en la Tabla 1, incluyen los compuestos mensuales NTL VIIRS-DNB corregidos por luz parásita para los años 2014-201823 (que miden la radiancia y filtran la nubosidad), la población cuadriculada reducida de LandScan 2014 y 201724, y WorldPop 2015 y 202025 para el análisis de sensibilidad. Las tasas nacionales de acceso a la electricidad se han extraído del portal de seguimiento del ODS 7 de ESMAP/Banco Mundial7 , mientras que las cifras a nivel provincial se han extraído de una serie de encuestas sobre el terreno a través del compilador STATcompiler del Programa USAID/DHS para la evaluación comparativa subnacional10. Los datos de las encuestas de hogares para validar los niveles de consumo se han obtenido de la Biblioteca de Microdatos del Banco Mundial (http://microdata.worldbank.org). Para definir los países, adoptamos el conjunto de datos de límites administrativos globales (GADM) v3.646.\n\n\n\nLa plataforma Google Earth Engine27 se utiliza para procesar imágenes de satélite y extraer datos, que posteriormente se emplean para producir los conjuntos de datos y graficar en el entorno de computación científica R. La sección Disponibilidad del código y registros de datos enlaza con los repositorios que alojan el código Javascript del motor Earth Engine y el script R, lo que permite reproducir los resultados, alterar los parámetros para realizar análisis de sensibilidad adicionales u otras mejoras implementadas por nuevos usuarios. Los resultados también se visualizan dinámicamente en una interfaz web, en https:// gdessa.ene.iiasa.ac.at.\nIdentificación de zonas urbanas y rurales. La definición de urbanización es muy variable entre países y regiones tanto de África47,48 como del mundo entero28. La definición de población urbana y rural de las Naciones Unidas está estrechamente vinculada a factores políticos y administrativos que dificultan la generalización de la estructura de los asentamientos humanos en los distintos países49. Recientemente se han promovido nuevos métodos para superar estos problemas, especialmente en los países de renta alta50. Éstos se basan en imágenes de satélite y en la ocupación del suelo, pero también en definiciones funcionales, por ejemplo, teniendo en cuenta la totalidad de las zonas de desplazamiento que rodean las ciudades. Para identificar los asentamientos urbanos y rurales a nivel de celda de cuadrícula, adoptamos el tipo de cobertura del suelo MODIS MCD12Q1 V6 de 201726 de la clasificación anual de la Universidad de Maryland (con una resolución de 500 m) en combinación con la población LandScan de 2017 (resolución de 1 km). Ambos conjuntos de datos se actualizan anualmente. Para las zonas urbanas, se utiliza el tipo de ocupación del suelo 13 (tierras urbanas y urbanizadas) como condición necesaria, en combinación con una densidad de población superior a umbrales específicos de hab - km-2.\nEn la Tabla suplementaria 1 se enumeran los grupos de países y los umbrales correspondientes que se han definido y aplicado para minimizar la discrepancia con la división entre población urbana y rural comunicada por el Banco Mundial para 2017 (https://data.worldbank.org/). Las bandas de umbrales se solapan parcialmente con las regiones geográficas, como África meridional, donde se considera que un umbral de más de 650 hab - km-2 predice eficazmente las zonas urbanas. No obstante, para algunos países su umbral no coincide con su región y se insertaron en agrupaciones de densidad que permitieron una mejor estimación de su tasa de urbanización notificada. Para los asentamientos rurales, se consideró la superficie de tierra con una densidad de población inferior a la del umbral de cada conglomerado. Se descartaron los terrenos no poblados.\nEl planteamiento da como resultado una estimación muy coherente (R2 = 0,84 y error estándar residual de 0,067 en una regresión lineal simple) con respecto a las cifras de división de la población del Banco Mundial y las Naciones Unidas basadas en las estadísticas nacionales oficiales de los países. La Fig. 1 suplementaria muestra la predicción obtenida con el enfoque.\nhttps://sedac.ciesin.columbia.edu/mapping/popgrid/#\nEstimación del acceso a la electricidad. Una gran cantidad de literatura ha demostrado que los lugares donde los sensores satelitales no pueden detectar la luz visible son probablemente áreas donde las personas viven sin acceso a la electricidad28-30,51. Calculamos el valor mediano de la radiancia dentro de cada píxel de los compuestos mensuales NPP-VIIRS tanto para 2014 como para 2018 dentro de la plataforma Google Earth Engine; se fijó un límite inferior de ruido en 0.25 \\mu W \\cdot cm^{-2} \\cdot sr^{-1} para 2014 y en 0.35 \\mu W \\cdot cm^{-2} \\cdot sr^{-1} para 2018 para eliminar el ruido de calibración y las luces efímeras, tal como se analiza en la literatura pertinente52-55. La discrepancia en los límites de ruido se justifica por el aumento del ruido de los datos obtenidos a partir de 2017. Según la opinión de los expertos, esto se debe a los ajustes de calibración en la corrección lunar y al lanzamiento de un nuevo satélite equipado con VIIRS (JPSS J1) en 2017 (como se analiza en56). La dispersión en el conjunto de límites inferiores de ruido antes y después de 2017 se determinó a partir del examen de píxeles de radiancia cero por definición -como dentro de grandes masas de agua- que, no obstante, presentan una radiancia sistemáticamente positiva para los datos desde 2017, y una radiancia sistemáticamente cero para los datos anteriores. Consulte la Información complementaria para ver histogramas que comparan la distribución del ruido de fondo antes y después de 2017 para la misma zona no poblada.\nSe han elaborado recuentos de población dentro de cada una de las provincias de nivel 1 de GADM tanto para las personas que viven en zonas iluminadas (por encima de 0.25/0.35 \\mu W \\cdot cm^{-2} \\cdot sr^{-1}) como en zonas oscuras (≤0.25/0.35 \\mu W \\cdot cm^{-2} \\cdot sr^{-1}). La clasificación cuadriculada de 1 km se utilizó para agregar los resultados cuadriculados en características espaciales poligonales que representaban los límites administrativos provinciales y nacionales. La agregación de los datos reticulares se consigue asumiendo que las celdas reticulares pertenecen al polígono que contiene su centroide. Para proporcionar un ejemplo de los datos de salida, la Fig. 2 muestra una instantánea de la densidad estimada de personas sin acceso a la electricidad en Uganda en 2018.\nclasificación de los niveles de consumo. Estudios anteriores han demostrado que el consumo residencial de electricidad puede predecirse con precisión a partir de datos de NTL (nighttime light) obtenidos por satélite, tanto a nivel nacional57 como provincial58. Aquí, consideramos una medida de la radiancia para aquellos que se estima que viven en zonas con acceso a la electricidad. Basándonos en la distribución de los valores de los cuartiles de radiancia luminosa distinta de cero en los países del ASS (Fig. suplementaria 2), se definieron cuatro niveles de consumo eléctrico residencial, con umbrales fijados en el valor medio de cada distribución de cuartiles. Con el fin de tener en cuenta la fuerte discontinuidad urbano-rural en la iluminación, esto se hizo por separado para los asentamientos urbanos y rurales. La clasificación de los asentamientos -y, por tanto, indirectamente también de los niveles- se basa en los datos de densidad de población y tiene en cuenta la heterogeneidad de las densidades en los distintos países, como se ha descrito anteriormente. En la Tabla 2 se indican los umbrales de los niveles correspondientes. Los cuatro niveles se validan con datos de encuestas coherentes con el marco multinivel del Banco Mundial59 , como se explica en la sección Validación técnica. Los datos por niveles se pueden asignar a un conjunto de datos de población cuadriculados para obtener la proporción de población con acceso a la electricidad en cada nivel de consumo, tanto en zonas urbanas como rurales.\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6.\n\n\nGertler, Lee, P. J. 2017. “Electricity Reliability and Economic Development in Cities: A Microeconomic Perspective.” Oxford Policy Management Center for Effective Global Action.\n\n\nMcCollum, David L, Luis Gomez Echeverri, Sebastian Busch, Shonali Pachauri, Simon Parkinson, Joeri Rogelj, Volker Krey, et al. 2018. “Connecting the Sustainable Development Goals by Their Energy Inter-Linkages.” Environmental Research Letters 13 (3): 033006. https://doi.org/10.1088/1748-9326/aaafe3.\n\n\nNations, United. 2018. “The Sustainable Development Goals Report 2018.” https://unstats.un.org/sdgs/files/report/2018/thesustainabledevelopmentgoalsreport2018-en.pdf.\n\n\nNerini, Francesco Fuso, Julia Tomei, Long Seng To, Iwona Bisaga, Priti Parikh, Mairi Black, Aiduan Borrion, et al. 2017. “Mapping Synergies and Trade-Offs Between Energy and the Sustainable Development Goals.” Nature Energy 3 (1): 10–15. https://doi.org/10.1038/s41560-017-0036-5.\n\n\nRiva, Fabio, Helene Ahlborg, Elias Hartvigsson, Shonali Pachauri, and Emanuela Colombo. 2018. “Electricity Access and Rural Development: Review of Complex Socio-Economic Dynamics and Causal Diagrams for More Appropriate Energy Modelling.” Energy for Sustainable Development 43 (April): 203–23. https://doi.org/10.1016/j.esd.2018.02.003."
   },
   {
-    "objectID": "experiments.html#introducción",
-    "href": "experiments.html#introducción",
-    "title": "7  Experimentación",
-    "section": "7.1 Introducción",
-    "text": "7.1 Introducción\nObservando el diagrama posterior se procederña definir las zonas donde existen personas residiendo y su nivel emisividad por eletribicación es baja. Como se realizado a lo largo del presente documento se considera como región de estudio la región del Bío Bío de Chile.\n\n\n\nEl diagrama de flujo representa las diferentes etapas, entradas de datos y salidas en la generación y validación de los datos. Azul: variables de teledetección; rojo: etapas de procesamiento; morado: métricas de salida; verde: datos de salida; blanco: conjuntos de datos de validación y apoyo; gris: etapas. Falchetta et al. (2019)"
+    "objectID": "calc_index.html#introducción",
+    "href": "calc_index.html#introducción",
+    "title": "Appendix D — Identificación Zonas",
+    "section": "D.1 Introducción",
+    "text": "D.1 Introducción\nTODO"
   },
   {
-    "objectID": "experiments.html#insumos",
-    "href": "experiments.html#insumos",
-    "title": "7  Experimentación",
-    "section": "7.2 Insumos",
-    "text": "7.2 Insumos\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
+    "objectID": "calc_index.html#imputar-insumos",
+    "href": "calc_index.html#imputar-insumos",
+    "title": "Appendix D — Identificación Zonas",
+    "section": "D.2 Imputar Insumos",
+    "text": "D.2 Imputar Insumos\nEsitmación de población de Luz noctura\n\npb_ls_2021 &lt;-  raster(\"data/tif/R08_LandScanGlobal_2021_100.tif\")\n\n\n\n\nFigure D.1: Población\n\n\n\nln_2021 &lt;-  raster(\"data/tif/R08_VIIRS_2021_100.tif\")\n\n\n\n\nFigure D.2: Emisividad Luz Nocturna"
   },
   {
-    "objectID": "experiments.html#insumos-claves",
-    "href": "experiments.html#insumos-claves",
-    "title": "7  Experimentación",
-    "section": "7.2 Insumos Claves",
-    "text": "7.2 Insumos Claves\nA continuación se presentan los insumos que se utilizarán para realizar la operación de definir las zonas con personas con necesidad de servicios de electrificación.\n\n\n\n\n\n\n\n(a) Población\n\n\n\n\n\n\n\n(b) Emisividad Luz Nocturna\n\n\n\n\nFigure 7.1: Insumos básicos"
+    "objectID": "calc_index.html#función-de-zonas-sin-accesos-a-electicidad",
+    "href": "calc_index.html#función-de-zonas-sin-accesos-a-electicidad",
+    "title": "Appendix D — Identificación Zonas",
+    "section": "D.3 Función de zonas sin accesos a Electicidad",
+    "text": "D.3 Función de zonas sin accesos a Electicidad\n\nnoaccess &lt;- function(pob, u_pob = 1, ln, u_ln= 0.1) {\n  mask &lt;- pob &gt;= u_pob & ln &lt;  u_ln\n  # mask[mask == 0] &lt;- NA\n  pop_masked &lt;- mask(pob, mask, maskvalue=0)\n  return(pop_masked)\n}"
   },
   {
-    "objectID": "experiments.html#cálculo",
-    "href": "experiments.html#cálculo",
-    "title": "7  Experimentación",
-    "section": "7.3 Cálculo",
-    "text": "7.3 Cálculo\nLa ecuación utilizada para identificar zonas donde existe población y que su emisividad sea menor a 0.1 de nanoWatts/cm^2/sr, como se observa en la siguiente gráfica.\n\n\n\nRepresentación de la ecuación para identificación de zonas carentes de servivios de electricidad"
+    "objectID": "calc_index.html#resultados",
+    "href": "calc_index.html#resultados",
+    "title": "Appendix D — Identificación Zonas",
+    "section": "D.4 Resultados",
+    "text": "D.4 Resultados\n\nnacc_ls_2021 &lt;-  noaccess(pob = pb_ls_2021,u_pob = 100, ln = ln_2021, u_ln = 1)\nmapview(nacc_ls_2021) + \n  mapview(pb_ls_2021,  hide = TRUE) + \n  mapview(ln_2021, hide = TRUE)\n\n\n\n\nFigure D.3: Zonas con población y baja emisisvidad de luz nocturna\n\n\n\nVisualización Dinámica de los resultados se puede ver en Chapter 7 de experimentación."
   },
   {
-    "objectID": "experiments.html#resultados",
-    "href": "experiments.html#resultados",
-    "title": "7  Experimentación",
-    "section": "7.4 Resultados",
-    "text": "7.4 Resultados\n\n\n\n\n\n\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
+    "objectID": "index.html#autor",
+    "href": "index.html#autor",
+    "title": "Nighttime Lights",
+    "section": "Autor:",
+    "text": "Autor:\nDenis Berroeta. Coordinador de Investigación, Centro de Inteligencia Territorial - UAI, email: denis.berroeta@uai.cl"
   }
 ]

@@ -1,0 +1,72 @@
+---
+subtitle: "Estimación de Carencia de Electicidad Urbana-Rural"
+editor_options: 
+  chunk_output_type: console
+---
+
+# Identificación Zonas {#sec-calIndex}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+source("R/fnc_gee.R")
+source("R/fnc_grals.R")
+library(dplyr)
+library(sf)
+library(raster)
+library(mapview)
+library(ggplot2)
+library(viridis)
+
+```
+
+## Introducción
+
+TODO
+
+## Imputar Insumos
+
+
+Esitmación de población de Luz noctura
+```{r}
+pb_ls_2021 <-  raster("data/tif/R08_LandScanGlobal_2021_100.tif")
+
+```
+
+![Población](images/R08_LandScanGlobal_2021_100.png){#fig-landscan fig-align="center" width="500"}
+
+```{r}
+ln_2021 <-  raster("data/tif/R08_VIIRS_2021_100.tif")
+```
+
+![Emisividad Luz Nocturna](images/R08_VIIRS_2021_100.png){#fig-luznoc fig-align="center" width="500"}
+
+## Función de zonas sin accesos a Electicidad
+
+
+```{r}
+noaccess <- function(pob, u_pob = 1, ln, u_ln= 0.1) {
+  mask <- pob >= u_pob & ln <  u_ln
+  # mask[mask == 0] <- NA
+  pop_masked <- mask(pob, mask, maskvalue=0)
+  return(pop_masked)
+}
+```
+
+
+## Resultados
+
+
+```{r eval=FALSE}
+nacc_ls_2021 <-  noaccess(pob = pb_ls_2021,u_pob = 100, ln = ln_2021, u_ln = 1)
+mapview(nacc_ls_2021) + 
+  mapview(pb_ls_2021,  hide = TRUE) + 
+  mapview(ln_2021, hide = TRUE)
+
+```
+
+
+![Zonas con población y baja emisisvidad de luz nocturna](images/calc_preview.png){#fig-preview fig-align="center" width="800"}
+
+
+
+* Visualización Dinámica de los resultados se puede ver en @sec-experiments de experimentación.

@@ -34,6 +34,7 @@ book:
     - iln.qmd
     - calc_pob.qmd
     - calc_LC.qmd
+    - calc_index.qmd
     - kde.qmd
     - paper_r1.qmd
     

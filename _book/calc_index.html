@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Denis Berroeta González (denis.berroeta@uai.cl)">
-<meta name="dcterms.date" content="2023-05-17">
 
-<title>Nighttime Lights</title>
+<title>Nighttime Lights - Appendix D — Identificación Zonas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./kde.html" rel="next">
+<link href="./calc_LC.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -76,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefacio</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iln.html">Appendices</a></li><li class="breadcrumb-item"><a href="./calc_index.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Identificación Zonas</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -103,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
@@ -224,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./calc_index.html" class="sidebar-item-text sidebar-link">
+  <a href="./calc_index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Identificación Zonas</span></span></a>
   </div>
 </li>
@@ -252,40 +285,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a>
-  <ul class="collapse">
-  <li><a href="#contenidos" id="toc-contenidos" class="nav-link" data-scroll-target="#contenidos">Contenidos</a></li>
-  <li><a href="#autor" id="toc-autor" class="nav-link" data-scroll-target="#autor">Autor:</a></li>
-  </ul></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">D.1</span> Introducción</a></li>
+  <li><a href="#imputar-insumos" id="toc-imputar-insumos" class="nav-link" data-scroll-target="#imputar-insumos"><span class="header-section-number">D.2</span> Imputar Insumos</a></li>
+  <li><a href="#función-de-zonas-sin-accesos-a-electicidad" id="toc-función-de-zonas-sin-accesos-a-electicidad" class="nav-link" data-scroll-target="#función-de-zonas-sin-accesos-a-electicidad"><span class="header-section-number">D.3</span> Función de zonas sin accesos a Electicidad</a></li>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados"><span class="header-section-number">D.4</span> Resultados</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Nighttime Lights</h1>
-<p class="subtitle lead">Acceso a la Electrificación Rural</p>
+<h1 class="title"><span id="sec-calIndex" class="quarto-section-identifier">Appendix D — Identificación Zonas</span></h1>
+<p class="subtitle lead">Estimación de Carencia de Electicidad Urbana-Rural</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Denis Berroeta González (<a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a>) </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 17, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,51 +313,62 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="prefacio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefacio</h1>
-<section id="contenidos" class="level2">
-<h2 class="anchored" data-anchor-id="contenidos">Contenidos</h2>
-<ul>
-<li>Introducción</li>
-<li>Objetivos</li>
-<li>Materiales
-<ul>
-<li>Contexto Global</li>
-<li>Luces Nocturas</li>
-<li>Población</li>
-<li>Land Cover</li>
-</ul></li>
-<li>Métodos
-<ul>
-<li>Experimentación</li>
-<li>Resultados</li>
-</ul></li>
-<li>Conclusiones</li>
-<li>Apendices
-<ul>
-<li>Cálculo de Luminocidad Nocturna</li>
-<li>Cálculo de Población</li>
-<li>Cálculo de Land Cover</li>
-<li>Identidicación de Zonas</li>
-<li>Kernel Densityy estaimation</li>
-<li>Paper de Referencias</li>
-</ul></li>
-</ul>
-<p>TODO:</p>
-<ul>
-<li>Land Scan Documentación</li>
-<li>Cálculo de índice</li>
-<li>Validación</li>
-<li>Resultados</li>
-</ul>
+<section id="introducción" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">D.1</span> Introducción</h2>
+<p>TODO</p>
 </section>
-<section id="autor" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="autor">Autor:</h2>
-<p><strong><a href="https://cit.uai.cl/denis-berroeta/">Denis Berroeta</a></strong>. Coordinador de Investigación, <a href="https://cit.uai.cl">Centro de Inteligencia Territorial - UAI</a>, email: <a href="mailto:denis.berroeta@uai.cl" class="email">denis.berroeta@uai.cl</a></p>
-<!-- Ingeniero en Prevención de Riesgos, Magíster en Inteligencia Artificial, Doctorado y Master in Data Science (cursando). Experiencia en Geoestadística, Percepción Remota, Análisis Criminal y Redes Neuronales Convolucionales. Tema de Tesis Detección de Cambios en Imágenes Radar con técnicas de deep learning. -->
+<section id="imputar-insumos" class="level2 page-columns page-full" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="imputar-insumos"><span class="header-section-number">D.2</span> Imputar Insumos</h2>
+<p>Esitmación de población de Luz noctura</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pb_ls_2021 <span class="ot">&lt;-</span>  <span class="fu">raster</span>(<span class="st">"data/tif/R08_LandScanGlobal_2021_100.tif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-landscan" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/R08_LandScanGlobal_2021_100.png" class="img-fluid figure-img" width="500"></p>
+<figcaption class="figure-caption margin-caption">Figure&nbsp;D.1: Población</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ln_2021 <span class="ot">&lt;-</span>  <span class="fu">raster</span>(<span class="st">"data/tif/R08_VIIRS_2021_100.tif"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-luznoc" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/R08_VIIRS_2021_100.png" class="img-fluid figure-img" width="500"></p>
+<figcaption class="figure-caption margin-caption">Figure&nbsp;D.2: Emisividad Luz Nocturna</figcaption>
+</figure>
+</div>
+</section>
+<section id="función-de-zonas-sin-accesos-a-electicidad" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="función-de-zonas-sin-accesos-a-electicidad"><span class="header-section-number">D.3</span> Función de zonas sin accesos a Electicidad</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>noaccess <span class="ot">&lt;-</span> <span class="cf">function</span>(pob, <span class="at">u_pob =</span> <span class="dv">1</span>, ln, <span class="at">u_ln=</span> <span class="fl">0.1</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  mask <span class="ot">&lt;-</span> pob <span class="sc">&gt;=</span> u_pob <span class="sc">&amp;</span> ln <span class="sc">&lt;</span>  u_ln</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mask[mask == 0] &lt;- NA</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  pop_masked <span class="ot">&lt;-</span> <span class="fu">mask</span>(pob, mask, <span class="at">maskvalue=</span><span class="dv">0</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pop_masked)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="resultados" class="level2 page-columns page-full" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="resultados"><span class="header-section-number">D.4</span> Resultados</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nacc_ls_2021 <span class="ot">&lt;-</span>  <span class="fu">noaccess</span>(<span class="at">pob =</span> pb_ls_2021,<span class="at">u_pob =</span> <span class="dv">100</span>, <span class="at">ln =</span> ln_2021, <span class="at">u_ln =</span> <span class="dv">1</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mapview</span>(nacc_ls_2021) <span class="sc">+</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mapview</span>(pb_ls_2021,  <span class="at">hide =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mapview</span>(ln_2021, <span class="at">hide =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-preview" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="images/calc_preview.png" class="img-fluid figure-img" width="800"></p>
+<figcaption class="figure-caption margin-caption">Figure&nbsp;D.3: Zonas con población y baja emisisvidad de luz nocturna</figcaption>
+</figure>
+</div>
+<ul>
+<li>Visualización Dinámica de los resultados se puede ver en <a href="experiments.html"><span>Chapter&nbsp;7</span></a> de experimentación.</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -576,10 +607,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./calc_LC.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Land Cover MODIS</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./kde.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
