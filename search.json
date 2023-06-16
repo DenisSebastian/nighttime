@@ -112,11 +112,32 @@
     "text": "6.4 Visualización de Resultados Landcover T2\nSe realizó un proceso de adquisión de datos de cobertura de uso de suelo, filtrándose por región de estudio y año, para luego transformar para entregar un resultado en formato correcto, lo cual quedó registrado en la Section C.3.\n\n\n\n\n\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
   },
   {
-    "objectID": "experiments.html",
-    "href": "experiments.html",
+    "objectID": "experiments.html#introducción",
+    "href": "experiments.html#introducción",
     "title": "7  Experimentación",
-    "section": "",
-    "text": "El diagrama de flujo representa las diferentes etapas, entradas de datos y salidas en la generación y validación de los datos. Azul: variables de teledetección; rojo: etapas de procesamiento; morado: métricas de salida; verde: datos de salida; blanco: conjuntos de datos de validación y apoyo; gris: etapas. Falchetta et al. (2019)\n\n\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
+    "section": "7.1 Introducción",
+    "text": "7.1 Introducción\nObservando el diagrama posterior se procederña definir las zonas donde existen personas residiendo y su nivel emisividad por eletribicación es baja. Como se realizado a lo largo del presente documento se considera como región de estudio la región del Bío Bío de Chile.\n\n\n\nEl diagrama de flujo representa las diferentes etapas, entradas de datos y salidas en la generación y validación de los datos. Azul: variables de teledetección; rojo: etapas de procesamiento; morado: métricas de salida; verde: datos de salida; blanco: conjuntos de datos de validación y apoyo; gris: etapas. Falchetta et al. (2019)"
+  },
+  {
+    "objectID": "experiments.html#insumos-claves",
+    "href": "experiments.html#insumos-claves",
+    "title": "7  Experimentación",
+    "section": "7.2 Insumos Claves",
+    "text": "7.2 Insumos Claves\nA continuación se presentan los insumos que se utilizarán para realizar la operación de definir las zonas con personas con necesidad de servicios de electrificación.\n\n\n\n\n\n\n\n(a) Población\n\n\n\n\n\n\n\n(b) Emisividad Luz Nocturna\n\n\n\n\nFigure 7.1: Insumos básicos"
+  },
+  {
+    "objectID": "experiments.html#cálculo",
+    "href": "experiments.html#cálculo",
+    "title": "7  Experimentación",
+    "section": "7.3 Cálculo",
+    "text": "7.3 Cálculo\nLa ecuación utilizada para identificar zonas donde existe población y que su emisividad sea menor a 0.1 de nanoWatts/cm^2/sr, como se observa en la siguiente gráfica.\n\n\n\nRepresentación de la ecuación para identificación de zonas carentes de servivios de electricidad"
+  },
+  {
+    "objectID": "experiments.html#resultados",
+    "href": "experiments.html#resultados",
+    "title": "7  Experimentación",
+    "section": "7.4 Resultados",
+    "text": "7.4 Resultados\n\n\n\n\n\n\n\n\n\n\nFalchetta, Giacomo, Shonali Pachauri, Simon Parkinson, and Edward Byers. 2019. “A High-Resolution Gridded Dataset to Assess Electrification in Sub-Saharan Africa.” Scientific Data 6 (1). https://doi.org/10.1038/s41597-019-0122-6."
   },
   {
     "objectID": "references.html",
