@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nighttime Lights - Appendix D — Kernel Density Estimation</title>
+<title>Nighttime Lights - Appendix E — Kernel Density Estimation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./paper_r1.html" rel="next">
-<link href="./calc_LC.html" rel="prev">
+<link href="./calc_index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iln.html">Appendices</a></li><li class="breadcrumb-item"><a href="./kde.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iln.html">Appendices</a></li><li class="breadcrumb-item"><a href="./kde.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -239,14 +239,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./calc_index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Identificación Zonas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./kde.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Kernel Density Estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./paper_r1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Paper de Referencia</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Paper de Referencia</span></span></a>
   </div>
 </li>
       </ul>
@@ -261,9 +267,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">D.1</span> Introducción</a></li>
-  <li><a href="#definición-matemática-de-kde" id="toc-definición-matemática-de-kde" class="nav-link" data-scroll-target="#definición-matemática-de-kde"><span class="header-section-number">D.2</span> Definición Matemática de KDE</a></li>
-  <li><a href="#kernel-density-estimation-espacial" id="toc-kernel-density-estimation-espacial" class="nav-link" data-scroll-target="#kernel-density-estimation-espacial"><span class="header-section-number">D.3</span> Kernel Density Estimation Espacial</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">E.1</span> Introducción</a></li>
+  <li><a href="#definición-matemática-de-kde" id="toc-definición-matemática-de-kde" class="nav-link" data-scroll-target="#definición-matemática-de-kde"><span class="header-section-number">E.2</span> Definición Matemática de KDE</a></li>
+  <li><a href="#kernel-density-estimation-espacial" id="toc-kernel-density-estimation-espacial" class="nav-link" data-scroll-target="#kernel-density-estimation-espacial"><span class="header-section-number">E.3</span> Kernel Density Estimation Espacial</a></li>
   </ul>
 </nav>
     </div>
@@ -272,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-kde" class="quarto-section-identifier">Appendix D — Kernel Density Estimation</span></h1>
+<h1 class="title"><span id="sec-kde" class="quarto-section-identifier">Appendix E — Kernel Density Estimation</span></h1>
 <p class="subtitle lead">Aproximación Metodológica</p>
 </div>
 
@@ -288,15 +294,15 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introducción" class="level2" data-number="D.1">
-<h2 data-number="D.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">D.1</span> Introducción</h2>
+<section id="introducción" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">E.1</span> Introducción</h2>
 <p>Identificar el tipo de distribución que tiene a una variable es un paso fundamental en prácticamente todos los estudios que implican datos, son muchas las ventajas que tiene disponer de una función que describa aproximadamente los datos. Por ejemplo, se puede calcular la probabilidad (o densidad en el caso de variables aleatorias continuas) de que una observación tome un determinado valor. También es posible simular nuevos. valores.</p>
 <p>En términos generales, ajustar una distribución consiste en encontrar una función matemática capaz de describir un conjunto de datos. De entre todas las posibles funciones candidatas, lo interesante es encontrar aquella que, con mayor probabilidad, puede haber generado los datos observados.</p>
 <p>Una de las aproximaciones más prácticas es utilizar como candidatas distribuciones paramétricas, estas son distribuciones conocidas cuyo comportamiento está determinado usando un número finito de parámetros. Por ejemplo, la distribución normal está parametrizada por la media y la desviación típica.</p>
 <p>Cuando ninguna de las distribuciones paramétricas disponibles describe correctamente los datos, es necesario recurrir lo que se conoce como métodos de ajuste no paramétricos, cuyo objetivo es encontrar funciones que describan distribuciones cualesquiera, entendiendo por cualesquiera a que no se limitan a las distribuciones paramétricas conocidas. Uno de los métodos más empleados es kernel density estimation (KDE).</p>
 </section>
-<section id="definición-matemática-de-kde" class="level2" data-number="D.2">
-<h2 data-number="D.2" class="anchored" data-anchor-id="definición-matemática-de-kde"><span class="header-section-number">D.2</span> Definición Matemática de KDE</h2>
+<section id="definición-matemática-de-kde" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="definición-matemática-de-kde"><span class="header-section-number">E.2</span> Definición Matemática de KDE</h2>
 <p>Dado un conjunto de datos <span class="math inline">x={x_1,x_2,...,x_n}</span> la función de distribución de densidad <span class="math inline">f(x)</span> puede aproximarse utilizando un kernel density estimation (KDE) tal que:</p>
 <p><span class="math display">
 \hat{f}(x)=\frac{1}{n}\sum_{i = 1}^{n}K_h(x-x_i)= \frac{1}{nh}\sum_{i = 1}^{n}K\left(\frac{x-x_i}{h}\right)
@@ -307,8 +313,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><span class="math inline">K</span>: es el Kernel, una función que define la forma y la distribución de la influencia (peso) que se asocian a cada observación. En los ejemplos anteriores se ha utilizado como kernel la distribución normal.</p></li>
 </ul>
 </section>
-<section id="kernel-density-estimation-espacial" class="level2 page-columns page-full" data-number="D.3">
-<h2 data-number="D.3" class="anchored" data-anchor-id="kernel-density-estimation-espacial"><span class="header-section-number">D.3</span> Kernel Density Estimation Espacial</h2>
+<section id="kernel-density-estimation-espacial" class="level2 page-columns page-full" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="kernel-density-estimation-espacial"><span class="header-section-number">E.3</span> Kernel Density Estimation Espacial</h2>
 <p>Para aplicar los KDE a casos espaciales, se tiene que entender que las variables aleatorias antes señaladas, ahora van a corresponder a eventos o condiciones físicas que ocurren en el espacio, por ende bajo un sistema de coordenadas, por lo cual el eje de coordenadas <span class="math inline">x</span> e <span class="math inline">y</span> que también intervienen como nuevas dimensiones, entonces los que se predente estimar una distribución multivariante.</p>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
@@ -557,13 +563,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./calc_LC.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Land Cover MODIS</span></span>
+      <a href="./calc_index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Identificación Zonas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./paper_r1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Paper de Referencia</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Paper de Referencia</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
